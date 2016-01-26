@@ -23,14 +23,15 @@ namespace MLG
         #endregion Images
 
         #region Sounds
-        private static SoundPlayer WOWSound;
-        private static SoundPlayer HitMarkerSound;
-        private static SoundPlayer SadMusicSound;
-        private static SoundPlayer OhMyGodSound;
-        private static SoundPlayer FuckSound;
-        private static SoundPlayer AkbarSound;
-        private static SoundPlayer DunkSound;
-        private static SoundPlayer SanicSound;
+        private static readonly SoundPlayer WOWSound = new SoundPlayer(Resource1.WOWwav);
+        private static readonly SoundPlayer HitMarkerSound = new SoundPlayer(Resource1.hitmarkersound);
+        private static readonly SoundPlayer SadMusicSound = new SoundPlayer(Resource1.sadmusic);
+        private static readonly SoundPlayer OhMyGodSound = new SoundPlayer(Resource1.ohmygod);
+        private static readonly SoundPlayer FuckSound = new SoundPlayer(Resource1.fuck);
+        private static readonly SoundPlayer AkbarSound = new SoundPlayer(Resource1.akbar);
+        private static readonly SoundPlayer DunkSound = new SoundPlayer(Resource1.dunk);
+        private static readonly SoundPlayer SanicSound = new SoundPlayer(Resource1.sanicSound);
+        private static bool PlayingSanic;
         #endregion Sounds
 
         // ReSharper disable once UnusedParameter.Local
@@ -45,21 +46,21 @@ namespace MLG
         {
             #region Sounds
 
-            WOWSound = new SoundPlayer(Resource1.WOWwav);
+            WOWSound.LoadAsync();
 
-            HitMarkerSound = new SoundPlayer(Resource1.hitmarkersound);
+            HitMarkerSound.LoadAsync();
 
-            SadMusicSound = new SoundPlayer(Resource1.sadmusic);
+            SadMusicSound.LoadAsync();
 
-            OhMyGodSound = new SoundPlayer(Resource1.ohmygod);
+            OhMyGodSound.LoadAsync();
 
-            FuckSound = new SoundPlayer(Resource1.fuck);
+            FuckSound.LoadAsync();
 
-            AkbarSound = new SoundPlayer(Resource1.akbar);
+            AkbarSound.LoadAsync();
 
-            DunkSound = new SoundPlayer(Resource1.dunk);
+            DunkSound.LoadAsync();
 
-            SanicSound = new SoundPlayer(Resource1.sanicSound);
+            SanicSound .LoadAsync();
 
             #endregion Sounds
 
@@ -82,13 +83,6 @@ namespace MLG
             Drawing.OnEndScene += Drawing_OnEndScene;
             AttackableUnit.OnDamage += Obj_AI_Base_OnDamage;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
-            Game.OnTick += Game_OnTick;
-        }
-
-        private static bool PlayingSanic;
-        private static void Game_OnTick(EventArgs args)
-        { 
-            
         }
 
         private static void Obj_AI_Base_OnDamage(AttackableUnit sender, AttackableUnitDamageEventArgs args)
@@ -101,12 +95,6 @@ namespace MLG
             HitMarkPosition = args.Target.Position.WorldToScreen();
             CanDrawHitMarker = true;
             HitMarkerSound.Play();
-
-            var hero = AkbarSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && !caster.Spellbook.GetSpell(x.Slot).IsReady);
-            if (args.Source.IsMe && hero!= null && args.Target.IsEnemy)
-            {
-                AkbarSound.Play();
-            }
   
             Core.DelayAction(() => CanDrawHitMarker = false, 200);
         }
@@ -172,10 +160,16 @@ namespace MLG
             var hero = sender as AIHeroClient;
             if (hero == null)return;
 
-            var herospell = DunkSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && !hero.Spellbook.GetSpell(x.Slot).IsReady);
+            var herospell = DunkSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && x.Slot == args.Slot);
             if (hero.IsMe && herospell != null && args.Target.IsEnemy)
             {
                 DunkSound.Play();
+            }
+
+            var heroakbar = AkbarSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && x.Slot == args.Slot);
+            if (hero.IsMe && hero != null && args.Target.IsEnemy)
+            {
+                AkbarSound.Play();
             }
         }
     }
