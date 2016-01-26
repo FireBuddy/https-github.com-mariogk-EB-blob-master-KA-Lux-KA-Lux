@@ -93,6 +93,18 @@
   <ItemGroup>
     <None Include="Resources\akbar.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sanic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sanic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dunk.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sanic %28Custom%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

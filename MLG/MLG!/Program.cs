@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using EloBuddy;
@@ -74,6 +75,7 @@ namespace MLG
             SanicSprite = new Sprite(() => TextureLoader["sanic"]);
             #endregion Images
 
+            Chat.Print("MLG Loaded");
 
             Game.OnNotify += Game_OnNotify;
             Obj_AI_Base.OnPlayAnimation += Obj_AI_Base_OnPlayAnimation;
@@ -82,18 +84,31 @@ namespace MLG
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
             Game.OnTick += Game_OnTick;
         }
-        
+
+        private static bool PlayingSanic;
         private static void Game_OnTick(EventArgs args)
-        {
-            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsVisible && h.MoveSpeed >= 300))
+        { 
+            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsHPBarRendered && !h.IsInShopRange()))
             {
-                if (hero != null)
+                SanicPosition = hero.Position.WorldToScreen();
+                CanDrawSanicSprite = HeroSanic(hero);
+
+                if (CanDrawSanicSprite && hero != null && !PlayingSanic)
                 {
-                    CanDrawSanicSprite = true;
-                    SanicPosition = hero.Position.WorldToScreen();
+                    PlayingSanic = true;
+                    SanicSound.Play();
+                    Core.DelayAction(() => PlayingSanic = false, 7000);
                 }
             }
-            Core.DelayAction(() => CanDrawSanicSprite = false, 4000);
+        }
+
+        private static bool HeroSanic(Obj_AI_Base hero)
+        {
+            if (hero.MoveSpeed > 590)
+            {
+                return true;
+            }
+            return false;
         }
 
         private static void Obj_AI_Base_OnDamage(AttackableUnit sender, AttackableUnitDamageEventArgs args)
@@ -161,7 +176,7 @@ namespace MLG
             if (CanDrawSanicSprite)
             {
                 var pos = new Vector2(SanicPosition.X - Resource1.Sanic.Width / 2, SanicPosition.Y - Resource1.Sanic.Height / 2 - 30);
-                HitMarker.Draw(pos);
+                SanicSprite.Draw(pos);
             }
         }
 
