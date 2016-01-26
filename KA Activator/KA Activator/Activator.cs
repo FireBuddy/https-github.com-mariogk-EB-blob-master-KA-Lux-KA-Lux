@@ -25,6 +25,7 @@ namespace KA_Activator
         private static void Game_OnUpdate(EventArgs args)
         {
             Defensive.Execute();
+
             Offensive.Execute();
             Consumables.Execute();
 
