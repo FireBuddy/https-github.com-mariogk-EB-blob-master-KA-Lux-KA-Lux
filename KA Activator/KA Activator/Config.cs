@@ -10,16 +10,14 @@ namespace KA_Activator
 {
     internal static class Config
     {
-        private const string MenuName = "KA Activator";
-
-        private static readonly Menu Menu;
+        private static readonly Menu FirstMenu;
 
         static Config()
         {
             // Initialize the menu
-            Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("KA Activator");
-            Menu.AddLabel("Made By: MarioGK", 50);
+            FirstMenu = MainMenu.AddMenu("KA Activator", "kaactivator");
+            FirstMenu.AddGroupLabel("KA Activator");
+            FirstMenu.AddLabel("Made By: MarioGK", 50);
 
             // Initialize the modes
             Types.Initialize();
@@ -36,19 +34,19 @@ namespace KA_Activator
 
             static Types()
             {
-                OffensiveMenu = Menu.AddSubMenu("::Offensive Items::");
+                OffensiveMenu = FirstMenu.AddSubMenu("::Offensive Items::");
                 OffensiveItems.Initialize();
 
-                DefensiveMenu = Menu.AddSubMenu("::Defensive Items::");
+                DefensiveMenu = FirstMenu.AddSubMenu("::Defensive Items::");
                 DeffensiveItems.Initialize();
 
-                ConsumablesMenu = Menu.AddSubMenu("::Consumables Items::");
+                ConsumablesMenu = FirstMenu.AddSubMenu("::Consumables Items::");
                 ConsumablesItems.Initialize();
 
-                SummonerMenu = Menu.AddSubMenu("::Summoner Spells::");
+                SummonerMenu = FirstMenu.AddSubMenu("::Summoner Spells::");
                 SummonerSpells.Initialize();
 
-                SettingsMenu = Menu.AddSubMenu("::Settings::");
+                SettingsMenu = FirstMenu.AddSubMenu("::Settings::");
                 Settings.Initialize();
             }
 
