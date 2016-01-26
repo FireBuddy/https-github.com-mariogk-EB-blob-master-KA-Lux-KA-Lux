@@ -17,9 +17,7 @@ namespace KA_Activator.Items
         {
             if (LastRun > Environment.TickCount)return;
 
-            if (!Player.Instance.IsInShopRange() &&
-                Player.Instance.CountAlliesInRange(Misc.RangeEnemy) >= Misc.EnemyCount &&
-                Activator.lastUsed > Environment.TickCount)
+            if (!Player.Instance.IsInShopRange() && Player.Instance.CountEnemiesInRange(Misc.RangeEnemy) >= Misc.EnemyCount)
             {
                 if (Settings.UseHPpot && HealthPotion.IsOwned())
                 {
