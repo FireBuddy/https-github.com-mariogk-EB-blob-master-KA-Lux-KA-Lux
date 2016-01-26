@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using EloBuddy;
@@ -7,6 +6,8 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Rendering;
 using SharpDX;
+
+// ReSharper disable PossibleLossOfFraction
 
 namespace MLG
 {
@@ -19,8 +20,6 @@ namespace MLG
         private static Sprite BrazzerSprite;
         private static bool CanDrawBrazzerSprite;
         private static Sprite SanicSprite;
-        private static bool CanDrawSanicSprite;
-        private static Vector2 SanicPosition;
         #endregion Images
 
         #region Sounds
@@ -34,6 +33,7 @@ namespace MLG
         private static SoundPlayer SanicSound;
         #endregion Sounds
 
+        // ReSharper disable once UnusedParameter.Local
         static void Main(string[] args)
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
@@ -88,27 +88,7 @@ namespace MLG
         private static bool PlayingSanic;
         private static void Game_OnTick(EventArgs args)
         { 
-            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsHPBarRendered && !h.IsInShopRange()))
-            {
-                SanicPosition = hero.Position.WorldToScreen();
-                CanDrawSanicSprite = HeroSanic(hero);
-
-                if (CanDrawSanicSprite && hero != null && !PlayingSanic)
-                {
-                    PlayingSanic = true;
-                    SanicSound.Play();
-                    Core.DelayAction(() => PlayingSanic = false, 7000);
-                }
-            }
-        }
-
-        private static bool HeroSanic(Obj_AI_Base hero)
-        {
-            if (hero.MoveSpeed > 590)
-            {
-                return true;
-            }
-            return false;
+            
         }
 
         private static void Obj_AI_Base_OnDamage(AttackableUnit sender, AttackableUnitDamageEventArgs args)
@@ -173,9 +153,16 @@ namespace MLG
                 BrazzerSprite.Draw(pos1);
             }
 
-            if (CanDrawSanicSprite)
+            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsHPBarRendered && !h.IsInShopRange() && h.MoveSpeed > 590))
             {
-                var pos = new Vector2(SanicPosition.X - Resource1.Sanic.Width / 2, SanicPosition.Y - Resource1.Sanic.Height / 2 - 30);
+                if (hero != null && !PlayingSanic)
+                {
+                    PlayingSanic = true;
+                    SanicSound.Play();
+                    Core.DelayAction(() => PlayingSanic = false, 7000);
+                }
+
+                var pos = new Vector2(hero.Position.WorldToScreen().X - Resource1.Sanic.Width / 2, hero.Position.WorldToScreen().Y - Resource1.Sanic.Height / 2 - 30);
                 SanicSprite.Draw(pos);
             }
         }
