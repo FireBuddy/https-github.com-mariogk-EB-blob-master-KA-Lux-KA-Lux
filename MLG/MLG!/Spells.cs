@@ -25,4 +25,26 @@ namespace MLG
             new AkbarSpell(Champion.Ziggs, SpellSlot.R),
         };
     }
+
+    public class DunkSpell
+    {
+        public DunkSpell(Champion _hero, SpellSlot slot)
+        {
+            Slot = slot;
+            Hero = _hero;
+        }
+
+        public SpellSlot Slot;
+        public Champion Hero;
+    }
+
+    public class DunkSpells
+    {
+        public static List<AkbarSpell> Spells = new List<AkbarSpell>
+        {
+            new AkbarSpell(Champion.Darius, SpellSlot.R),
+            new AkbarSpell(Champion.JarvanIV, SpellSlot.R),
+            new AkbarSpell(Champion.Aatrox, SpellSlot.Q),
+        };
+    }
 }

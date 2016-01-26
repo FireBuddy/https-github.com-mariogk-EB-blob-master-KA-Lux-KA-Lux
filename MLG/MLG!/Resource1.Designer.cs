@@ -82,6 +82,15 @@ namespace MLG {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream dunk {
+            get {
+                return ResourceManager.GetStream("dunk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream fuck {
             get {
                 return ResourceManager.GetStream("fuck", resourceCulture);
@@ -122,6 +131,25 @@ namespace MLG {
         internal static System.IO.UnmanagedMemoryStream sadmusic {
             get {
                 return ResourceManager.GetStream("sadmusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sanic {
+            get {
+                object obj = ResourceManager.GetObject("Sanic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sanicSound {
+            get {
+                return ResourceManager.GetStream("sanicSound", resourceCulture);
             }
         }
         

@@ -17,6 +17,9 @@ namespace MLG
         private static Vector2 HitMarkPosition;
         private static Sprite BrazzerSprite;
         private static bool CanDrawBrazzerSprite;
+        private static Sprite SanicSprite;
+        private static bool CanDrawSanicSprite;
+        private static Vector2 SanicPosition;
         #endregion Images
 
         #region Sounds
@@ -27,6 +30,7 @@ namespace MLG
         private static SoundPlayer FuckSound;
         private static SoundPlayer AkbarSound;
         private static SoundPlayer DunkSound;
+        private static SoundPlayer SanicSound;
         #endregion Sounds
 
         static void Main(string[] args)
@@ -54,6 +58,8 @@ namespace MLG
 
             DunkSound = new SoundPlayer(Resource1.dunk);
 
+            SanicSound = new SoundPlayer(Resource1.sanicSound);
+
             #endregion Sounds
 
             #region Images
@@ -64,6 +70,8 @@ namespace MLG
             TextureLoader.Load("brazzer", Resource1.brazzer);
             BrazzerSprite = new Sprite(() => TextureLoader["brazzer"]);
 
+            TextureLoader.Load("sanic", Resource1.Sanic);
+            SanicSprite = new Sprite(() => TextureLoader["sanic"]);
             #endregion Images
 
 
@@ -72,6 +80,20 @@ namespace MLG
             Drawing.OnEndScene += Drawing_OnEndScene;
             AttackableUnit.OnDamage += Obj_AI_Base_OnDamage;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
+            Game.OnTick += Game_OnTick;
+        }
+        
+        private static void Game_OnTick(EventArgs args)
+        {
+            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsVisible && h.MoveSpeed >= 300))
+            {
+                if (hero != null)
+                {
+                    CanDrawSanicSprite = true;
+                    SanicPosition = hero.Position.WorldToScreen();
+                }
+            }
+            Core.DelayAction(() => CanDrawSanicSprite = false, 4000);
         }
 
         private static void Obj_AI_Base_OnDamage(AttackableUnit sender, AttackableUnitDamageEventArgs args)
@@ -91,13 +113,6 @@ namespace MLG
                 AkbarSound.Play();
             }
   
-            if (hero != null && sender.IsVisible && !caster.Spellbook.GetSpell(SpellSlot.R).IsReady)
-            {
-                if (hero.Hero == Champion.JarvanIV || hero.Hero == Champion.Darius || hero.Hero == Champion.Aatrox)
-                {
-                    DunkSound.Play();
-                }
-            }
             Core.DelayAction(() => CanDrawHitMarker = false, 200);
         }
 
@@ -142,12 +157,24 @@ namespace MLG
                 var pos1 = new Vector2(450, 280);
                 BrazzerSprite.Draw(pos1);
             }
+
+            if (CanDrawSanicSprite)
+            {
+                var pos = new Vector2(SanicPosition.X - Resource1.Sanic.Width / 2, SanicPosition.Y - Resource1.Sanic.Height / 2 - 30);
+                HitMarker.Draw(pos);
+            }
         }
 
         private static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             var hero = sender as AIHeroClient;
             if (hero == null)return;
+
+            var herospell = DunkSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && !hero.Spellbook.GetSpell(x.Slot).IsReady);
+            if (hero.IsMe && herospell != null && args.Target.IsEnemy)
+            {
+                DunkSound.Play();
+            }
         }
     }
 }
