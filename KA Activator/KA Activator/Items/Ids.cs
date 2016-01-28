@@ -8,7 +8,6 @@ namespace KA_Activator.Items
         #region Consumables
         protected static readonly Item HealthPotion = new Item(2003);
         protected static readonly Item ElixirOfIron = new Item(ItemId.Elixir_of_Iron);
-        protected static readonly Item ElixirOfRuin = new Item(ItemId.Elixir_of_Ruin);
         protected static readonly Item ElixirOfSorcery = new Item(ItemId.Elixir_of_Sorcery);
         protected static readonly Item ElixirOfWrath = new Item(ItemId.Elixir_of_Wrath);
         protected static readonly Item Biscuit = new Item(2010);
