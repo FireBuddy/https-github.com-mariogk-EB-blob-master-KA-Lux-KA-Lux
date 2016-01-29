@@ -87,6 +87,7 @@ namespace MLG
 
         private static void Obj_AI_Base_OnDamage(AttackableUnit sender, AttackableUnitDamageEventArgs args)
         {
+            /*
             var caster = sender as AIHeroClient;
             var target = args.Target as AIHeroClient;
 
@@ -97,6 +98,7 @@ namespace MLG
             HitMarkerSound.Play();
   
             Core.DelayAction(() => CanDrawHitMarker = false, 200);
+            */
         }
 
         private static void Game_OnNotify(GameNotifyEventArgs args)
@@ -141,13 +143,13 @@ namespace MLG
                 BrazzerSprite.Draw(pos1);
             }
 
-            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsHPBarRendered && !h.IsInShopRange() && h.MoveSpeed > 590))
+            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsHPBarRendered && !h.IsInShopRange() && h.MoveSpeed > 490))
             {
                 if (hero != null && !PlayingSanic)
                 {
                     PlayingSanic = true;
                     SanicSound.Play();
-                    Core.DelayAction(() => PlayingSanic = false, 7000);
+                    Core.DelayAction(() => PlayingSanic = false, 15000);
                 }
 
                 var pos = new Vector2(hero.Position.WorldToScreen().X - Resource1.Sanic.Width / 2, hero.Position.WorldToScreen().Y - Resource1.Sanic.Height / 2 - 30);
@@ -167,7 +169,7 @@ namespace MLG
             }
 
             var heroakbar = AkbarSpells.Spells.FirstOrDefault(x => x.Hero == Player.Instance.Hero && x.Slot == args.Slot);
-            if (hero.IsMe && hero != null && args.Target.IsEnemy)
+            if (hero.IsMe && heroakbar != null && args.Target.IsEnemy)
             {
                 AkbarSound.Play();
             }
