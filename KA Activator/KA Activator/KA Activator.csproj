@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -56,24 +57,68 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activator.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="DMGHandler\DamageHandle.cs" />
-    <Compile Include="DMGHandler\DangerousSpells.cs" />
     <Compile Include="EventsManager.cs" />
-    <Compile Include="Items\Consumables.cs" />
-    <Compile Include="Items\Defensive.cs" />
-    <Compile Include="Items\Extensions.cs" />
-    <Compile Include="Items\Ids.cs" />
-    <Compile Include="Items\Offensive.cs" />
+    <Compile Include="Maps\CrystalScar\Config.cs" />
+    <Compile Include="Maps\CrystalScar\DMGHandler\DamageHandle.cs" />
+    <Compile Include="Maps\CrystalScar\DMGHandler\DangerousSpells.cs" />
+    <Compile Include="Maps\CrystalScar\Items\Consumables.cs" />
+    <Compile Include="Maps\CrystalScar\Items\Defensive.cs" />
+    <Compile Include="Maps\CrystalScar\Items\Extensions.cs" />
+    <Compile Include="Maps\CrystalScar\Items\Ids.cs" />
+    <Compile Include="Maps\CrystalScar\Items\Offensive.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Extensions.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Initialize.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Spells\Barrier.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Spells\Exhaust.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Spells\Ghost.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="Maps\CrystalScar\SummonerSpells\Spells\Smite.cs" />
+    <Compile Include="Maps\HowlingAbyss\Config.cs" />
+    <Compile Include="Maps\HowlingAbyss\DMGHandler\DamageHandle.cs" />
+    <Compile Include="Maps\HowlingAbyss\DMGHandler\DangerousSpells.cs" />
+    <Compile Include="Maps\HowlingAbyss\Items\Consumables.cs" />
+    <Compile Include="Maps\HowlingAbyss\Items\Defensive.cs" />
+    <Compile Include="Maps\HowlingAbyss\Items\Extensions.cs" />
+    <Compile Include="Maps\HowlingAbyss\Items\Ids.cs" />
+    <Compile Include="Maps\HowlingAbyss\Items\Offensive.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Extensions.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Initialize.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Spells\Barrier.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Spells\Exhaust.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Spells\Ghost.cs" />
+    <Compile Include="Maps\HowlingAbyss\SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="Maps\SummonersRift\Config.cs" />
+    <Compile Include="Maps\SummonersRift\DMGHandler\DamageHandle.cs" />
+    <Compile Include="Maps\SummonersRift\DMGHandler\DangerousSpells.cs" />
+    <Compile Include="Maps\SummonersRift\Items\Consumables.cs" />
+    <Compile Include="Maps\SummonersRift\Items\Defensive.cs" />
+    <Compile Include="Maps\SummonersRift\Items\Extensions.cs" />
+    <Compile Include="Maps\SummonersRift\Items\Ids.cs" />
+    <Compile Include="Maps\SummonersRift\Items\Offensive.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Extensions.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Initialize.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Spells\Barrier.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Spells\Exhaust.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Spells\Ghost.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="Maps\SummonersRift\SummonerSpells\Spells\Smite.cs" />
+    <Compile Include="Maps\Twistedtreeline\Config.cs" />
+    <Compile Include="Maps\Twistedtreeline\DMGHandler\DamageHandle.cs" />
+    <Compile Include="Maps\Twistedtreeline\DMGHandler\DangerousSpells.cs" />
+    <Compile Include="Maps\Twistedtreeline\Items\Consumables.cs" />
+    <Compile Include="Maps\Twistedtreeline\Items\Defensive.cs" />
+    <Compile Include="Maps\Twistedtreeline\Items\Extensions.cs" />
+    <Compile Include="Maps\Twistedtreeline\Items\Ids.cs" />
+    <Compile Include="Maps\Twistedtreeline\Items\Offensive.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Extensions.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Initialize.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Spells\Barrier.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Spells\Exhaust.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Spells\Ghost.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="Maps\Twistedtreeline\SummonerSpells\Spells\Smite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SummonerSpells\Extensions.cs" />
-    <Compile Include="SummonerSpells\Initialize.cs" />
-    <Compile Include="SummonerSpells\Spells\Barrier.cs" />
-    <Compile Include="SummonerSpells\Spells\Exhaust.cs" />
-    <Compile Include="SummonerSpells\Spells\Ghost.cs" />
-    <Compile Include="SummonerSpells\Spells\Heal.cs" />
-    <Compile Include="SummonerSpells\Spells\Smite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
