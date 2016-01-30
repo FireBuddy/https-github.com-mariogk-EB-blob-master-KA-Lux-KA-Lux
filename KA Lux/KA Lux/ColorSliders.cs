@@ -15,6 +15,7 @@ namespace KA_Lux
         public Slider RedSlider { get; set; }
         public Slider BlueSlider { get; set; }
         public Slider GreenSlider { get; set; }
+        public Slider AlphaSlider { get; set; }
         private ColorPickerControl ColorPicker { get; set; }
 
         public string Id { get; private set; }
@@ -32,6 +33,7 @@ namespace KA_Lux
             RedSlider = new Slider("Red", color.R, 0, 255);
             GreenSlider = new Slider("Green", color.B, 0, 255);
             BlueSlider = new Slider("Blue", color.G, 0, 255);
+            AlphaSlider = new Slider("Alpha", color.A, 0, 255);
             ColorPicker = new ColorPickerControl(Id + "ColorDisplay", color);
 
             _menu.AddGroupLabel(name);
@@ -40,38 +42,45 @@ namespace KA_Lux
             _menu.Add(Id + "Red", RedSlider);
             _menu.Add(Id + "Green", GreenSlider);
             _menu.Add(Id + "Blue", BlueSlider);
+            _menu.Add(Id + "Alpha", AlphaSlider);
 
             RedSlider.OnValueChange += OnValueChange;
             GreenSlider.OnValueChange += OnValueChange;
             BlueSlider.OnValueChange += OnValueChange;
+            AlphaSlider.OnValueChange += OnValueChange;
 
-            ColorPicker.SetColor(Color.FromArgb(GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue)));
+            ColorPicker.SetColor(Color.FromArgb(GetValue(ColorBytes.Alpha), GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue)));
         }
 
         private void OnValueChange(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
         {
             if (sender.DisplayName == RedSlider.DisplayName)
             {
-                ColorPicker.SetColor(Color.FromArgb(sender.CurrentValue, ColorPicker.CurrentValue.G, ColorPicker.CurrentValue.B));
+                ColorPicker.SetColor(Color.FromArgb(ColorPicker.CurrentValue.A, sender.CurrentValue, ColorPicker.CurrentValue.G, ColorPicker.CurrentValue.B));
             }
             if (sender.DisplayName == GreenSlider.DisplayName)
             {
-                ColorPicker.SetColor(Color.FromArgb(ColorPicker.CurrentValue.R, sender.CurrentValue, ColorPicker.CurrentValue.B));
+                ColorPicker.SetColor(Color.FromArgb(ColorPicker.CurrentValue.A, ColorPicker.CurrentValue.R, sender.CurrentValue, ColorPicker.CurrentValue.B));
             }
             if (sender.DisplayName == BlueSlider.DisplayName)
             {
-                ColorPicker.SetColor(Color.FromArgb(ColorPicker.CurrentValue.R, ColorPicker.CurrentValue.G, sender.CurrentValue));
+                ColorPicker.SetColor(Color.FromArgb(ColorPicker.CurrentValue.A ,ColorPicker.CurrentValue.R, ColorPicker.CurrentValue.G, sender.CurrentValue));
             }
+            if (sender.DisplayName == AlphaSlider.DisplayName)
+            {
+                ColorPicker.SetColor(Color.FromArgb(sender.CurrentValue, ColorPicker.CurrentValue.R, ColorPicker.CurrentValue.G, ColorPicker.CurrentValue.B));
+            }
+            
         }
 
         public ColorBGRA GetSharpColor()
         {                  //RED,GREEN,BLUE,AA
-            return new ColorBGRA(GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue), 255);
+            return new ColorBGRA(GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue), GetValue(ColorBytes.Alpha));
         }
 
         public Color GetSystemColor()
         {
-            return Color.FromArgb(GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue));
+            return Color.FromArgb(GetValue(ColorBytes.Alpha), GetValue(ColorBytes.Red), GetValue(ColorBytes.Green), GetValue(ColorBytes.Blue));
         }
 
         public byte GetValue(ColorBytes color)
@@ -84,6 +93,8 @@ namespace KA_Lux
                     return Convert.ToByte(BlueSlider.CurrentValue);
                 case ColorBytes.Green:
                     return Convert.ToByte(GreenSlider.CurrentValue);
+                case ColorBytes.Alpha:
+                    return Convert.ToByte(AlphaSlider.CurrentValue);
             }
             return 255;
         }
@@ -155,7 +166,7 @@ namespace KA_Lux
 
         public enum ColorBytes
         {
-            Red, Green, Blue
+            Red, Green, Blue, Alpha
         }
     }
 }
