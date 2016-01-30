@@ -1,0 +1,14 @@
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\KA Shyvanna.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\KA Shyvanna.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\KA Shyvanna.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\obj\Debug\KA Shyvanna.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\obj\Debug\KA_Shyvanna.Resource1.resources
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\obj\Debug\KA Shyvanna.csproj.GenerateResource.Cache
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\obj\Debug\KA Shyvanna.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Shyvanna\KA Shyvanna\obj\Debug\KA Shyvanna.pdb
