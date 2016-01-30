@@ -41,9 +41,6 @@ namespace KA_Shyvanna
                 LaneClear.Initialize();
                 LastHit.Initialize();
 
-                MiscMenu = Menu.AddSubMenu("::Misc::");
-                Misc.Initialize();
-
                 DrawMenu = Menu.AddSubMenu("::Drawings::");
                 Draw.Initialize();
             }
@@ -133,7 +130,6 @@ namespace KA_Shyvanna
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
@@ -150,19 +146,12 @@ namespace KA_Shyvanna
                     get { return _useE.CurrentValue; }
                 }
 
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
                 static LaneClear()
                 {
                     FarmMenu.AddGroupLabel("LaneClear Spells:");
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
                     _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    FarmMenu.AddGroupLabel("LaneClear Settings:");
-                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -176,7 +165,6 @@ namespace KA_Shyvanna
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
@@ -198,12 +186,6 @@ namespace KA_Shyvanna
                     get { return _useR.CurrentValue; }
                 }
 
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
-
                 static LastHit()
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
@@ -211,40 +193,6 @@ namespace KA_Shyvanna
                     _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
                     _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
-                    FarmMenu.AddGroupLabel("LastHit Settings:");
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
-                }
-
-                public static void Initialize()
-                {
-                }
-            }
-
-            public static class Misc
-            {
-                private static readonly CheckBox _interruptSpell;
-                private static readonly CheckBox _antiGapCloserSpell;
-                private static readonly Slider _miscMana;
-
-                public static bool InterruptSpell
-                {
-                    get { return _interruptSpell.CurrentValue; }
-                }
-
-                public static bool AntiGapCloser
-                {
-                    get { return _antiGapCloserSpell.CurrentValue; }
-                }
-
-                public static int MiscMana
-                {
-                    get { return _miscMana.CurrentValue; }
-                }
-
-                static Misc()
-                {
-                    // Initialize the menu values
-                    MiscMenu.AddGroupLabel("Miscellaneous");
                 }
 
                 public static void Initialize()
