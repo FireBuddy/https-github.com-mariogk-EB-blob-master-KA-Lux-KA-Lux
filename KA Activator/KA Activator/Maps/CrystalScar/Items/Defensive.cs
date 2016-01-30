@@ -4,8 +4,8 @@ using EloBuddy;
 using EloBuddy.SDK;
 using KA_Activator.Maps.CrystalScar.DMGHandler;
 
-using Misc = KA_Activator.Maps.SummonersRift.Config.Types.Settings;
-using Settings = KA_Activator.Maps.SummonersRift.Config.Types.DeffensiveItems;
+using Misc = KA_Activator.Maps.CrystalScar.Config.Types.Settings;
+using Settings = KA_Activator.Maps.CrystalScar.Config.Types.DeffensiveItems;
 
 namespace KA_Activator.Maps.CrystalScar.Items
 {

@@ -1,0 +1,11 @@
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\LelBlanc.exe.config
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\LelBlanc.exe
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\LelBlanc.pdb
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\obj\Debug\LelBlanc.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\obj\Debug\LelBlanc.exe
+C:\Users\Mario\Documents\GitHub\EB\LelBlanc\LelBlanc\obj\Debug\LelBlanc.pdb

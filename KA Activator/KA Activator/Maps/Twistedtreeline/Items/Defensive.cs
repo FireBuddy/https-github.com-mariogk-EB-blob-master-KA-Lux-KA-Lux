@@ -57,7 +57,7 @@ namespace KA_Activator.Maps.Twistedtreeline.Items
                 }
             }
 
-            if (Mikael.IsReady() && Summoner.Items.Extensions.HasCCs(Player.Instance) && Mikael.IsOwned())
+            if (Mikael.IsReady() && SummonersRift.Items.Extensions.HasCCs(Player.Instance) && Mikael.IsOwned())
             {
                 var allyMikael = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(Settings.AllyHPMikaelHeal));
                 if (allyMikael != null)

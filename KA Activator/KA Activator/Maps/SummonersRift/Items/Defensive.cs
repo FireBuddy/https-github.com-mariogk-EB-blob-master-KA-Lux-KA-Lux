@@ -2,7 +2,6 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KA_Activator.Maps.Summoner.Items;
 using KA_Activator.Maps.SummonersRift.DMGHandler;
 
 using Misc = KA_Activator.Maps.SummonersRift.Config.Types.Settings;

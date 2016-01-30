@@ -1,0 +1,14 @@
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\KA-Riven.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\KA-Riven.exe
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\KA-Riven.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\obj\Debug\KA-Riven.exe
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\obj\Debug\KA-Riven.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\obj\Debug\KA-Riven.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\obj\Debug\KA_Riven.Resource1.resources
+C:\Users\Mario\Documents\GitHub\EB\KA-Riven\KA-Riven\obj\Debug\KA-Riven.csproj.GenerateResource.Cache

@@ -3,7 +3,7 @@ using Settings = KA_Activator.Maps.SummonersRift.Config.Types.DeffensiveItems;
 
 // ReSharper disable once ConvertIfStatementToReturnStatement
 
-namespace KA_Activator.Maps.Summoner.Items
+namespace KA_Activator.Maps.SummonersRift.Items
 {
     internal static class Extensions
     {

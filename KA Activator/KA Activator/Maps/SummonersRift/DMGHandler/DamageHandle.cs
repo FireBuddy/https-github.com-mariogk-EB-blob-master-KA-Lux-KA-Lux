@@ -2,7 +2,6 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using KA_Activator.Maps.SummonersRift.DMGHandler;
 
 using Settings = KA_Activator.Maps.SummonersRift.Config.Types.Settings;
 
