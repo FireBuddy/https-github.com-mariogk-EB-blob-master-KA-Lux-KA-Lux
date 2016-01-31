@@ -11,7 +11,7 @@ namespace KA_Syndra.Modes
         {
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear);
         }
-
+        public static int lastWCast;
         public override void Execute()
         {
             var jgminion =
@@ -26,9 +26,18 @@ namespace KA_Syndra.Modes
                 Q.Cast(jgminion);
             }
 
-            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW && Functions.SpheresCount() > 0)
+            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast(W.GetPrediction(jgminion).CastPosition);
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Game.TicksPerSecond)
+                {
+                    W.Cast(Functions.GrabWPost(false));
+                    lastWCast = Game.TicksPerSecond;
+                }
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
+                    lastWCast + 100 < Game.TicksPerSecond)
+                {
+                    W.Cast(W.GetPrediction(jgminion).CastPosition);
+                }
             }
         }
     }

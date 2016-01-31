@@ -13,6 +13,8 @@ namespace KA_Syndra.Modes
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo);
         }
 
+        public static int lastWCast;
+
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(QE.Range, DamageType.Magical);
@@ -35,9 +37,18 @@ namespace KA_Syndra.Modes
                 }
             }
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Functions.SpheresCount() > 0)
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast(W.GetPrediction(target).CastPosition);
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast +500 < Game.TicksPerSecond)
+                {
+                    W.Cast(Functions.GrabWPost(false));
+                    lastWCast = Game.TicksPerSecond;
+                }
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
+                    lastWCast + 100 < Game.TicksPerSecond)
+                {
+                    W.Cast(W.GetPrediction(target).CastPosition);
+                }
             }
 
             if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR &&

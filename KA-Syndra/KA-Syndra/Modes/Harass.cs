@@ -10,7 +10,7 @@ namespace KA_Syndra.Modes
         {
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass);
         }
-
+        public static int lastWCast;
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
@@ -33,11 +33,18 @@ namespace KA_Syndra.Modes
                 }
             }
 
-            if (W.IsReady() && target.IsValidTarget(E.Range) && Settings.UseW)
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast(Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2
-                    ? W.GetPrediction(target).CastPosition
-                    : Functions.GrabWPost(false));
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Game.TicksPerSecond)
+                {
+                    W.Cast(Functions.GrabWPost(false));
+                    lastWCast = Game.TicksPerSecond;
+                }
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
+                    lastWCast + 100 < Game.TicksPerSecond)
+                {
+                    W.Cast(W.GetPrediction(target).CastPosition);
+                }
             }
 
         }
