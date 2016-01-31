@@ -2,6 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
+
 using Settings = KA_Activator.Maps.Twistedtreeline.Config.Types.Settings;
 
 namespace KA_Activator.Maps.Twistedtreeline.DMGHandler
