@@ -27,36 +27,42 @@ namespace KA_Syndra.Modes
             }
             //RKS
             //AutoHarass
-            if (Q.IsReady() && E.IsReady() && target.IsValidTarget(QE.Range) && Settings.UseQ && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+            var tower = EntityManager.Turrets.Allies.FirstOrDefault(t => t.IsInRange(Player.Instance, 920));
+            if (tower == null)
             {
-                Functions.QE(QE.GetPrediction(target).CastPosition);
-            }
-            else
-            {
-                if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                
+                if (Q.IsReady() && E.IsReady() && target.IsValidTarget(QE.Range) && Settings.UseQ && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                 {
-                    Q.Cast(target);
+                    Functions.QE(QE.GetPrediction(target).CastPosition);
+                }
+                else
+                {
+                    if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                    {
+                        Q.Cast(target);
+                    }
+
+                    if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                    {
+                        E.Cast(target);
+                    }
                 }
 
-                if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                 {
-                    E.Cast(target);
+                    if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 500 < Environment.TickCount)
+                    {
+                        W.Cast(Functions.GrabWPost(false));
+                        lastWCast = Environment.TickCount;
+                    }
+                    if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 &&
+                        lastWCast + 100 < Environment.TickCount)
+                    {
+                        W.Cast(W.GetPrediction(target).CastPosition);
+                    }
                 }
             }
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
-            {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 500 < Environment.TickCount)
-                {
-                    W.Cast(Functions.GrabWPost(false));
-                    lastWCast = Environment.TickCount;
-                }
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 &&
-                    lastWCast + 100 < Environment.TickCount)
-                {
-                    W.Cast(W.GetPrediction(target).CastPosition);
-                }
-            }
         }
     }
 }
