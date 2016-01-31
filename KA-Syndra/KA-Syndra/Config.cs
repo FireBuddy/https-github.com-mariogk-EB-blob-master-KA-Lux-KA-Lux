@@ -1,4 +1,5 @@
-﻿using EloBuddy;
+﻿using System;
+using EloBuddy;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using Color = System.Drawing.Color;
@@ -101,6 +102,7 @@ namespace KA_Syndra
                 private static readonly CheckBox _useE;
                 private static readonly Slider _manaHarass;
                 //Auto
+                private static readonly KeyBind _autoHarassKey;
                 private static readonly CheckBox _useAutoQ;
                 private static readonly CheckBox _useAutoW;
                 private static readonly CheckBox _useAutoE;
@@ -126,6 +128,11 @@ namespace KA_Syndra
                     get { return _manaHarass.CurrentValue; }
                 }
                 //Auto
+                public static bool KeyAutoHarass
+                {
+                    get { return _autoHarassKey.CurrentValue; }
+                }
+
                 public static bool UseAutoQ
                 {
                     get { return _useAutoQ.CurrentValue; }
@@ -155,6 +162,8 @@ namespace KA_Syndra
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                     SpellsMenu.AddGroupLabel("AutoHarass Spells:");
+                    _autoHarassKey = SpellsMenu.Add("autoHarassKey",
+                        new KeyBind("Switch On/Off AutoHarass", false, KeyBind.BindTypes.PressToggle, 'Z'));
                     _useAutoQ = SpellsMenu.Add("autoharassQ", new CheckBox("Use Q on AutoHarass ?"));
                     _useAutoW = SpellsMenu.Add("autoharassW", new CheckBox("Use W on AutoHarass ?"));
                     _useAutoE = SpellsMenu.Add("autoharassE", new CheckBox("Use E on AutoHarass ?", false));

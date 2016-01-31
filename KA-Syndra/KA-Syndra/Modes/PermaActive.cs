@@ -20,6 +20,7 @@ namespace KA_Syndra.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
             Console.WriteLine(SpellDamage.GetRealDamage(SpellSlot.R, target));
+            Console.WriteLine(Functions.SpheresCountR());
             //RKS
             if (SpellManager.R.IsReady() && target.IsValidTarget(R.Range) &&
                 target.Health <= SpellDamage.GetRealDamage(SpellSlot.R, target) && target.Health > Misc.OverkillR)
@@ -29,27 +30,27 @@ namespace KA_Syndra.Modes
             //RKS
             //AutoHarass
             var tower = EntityManager.Turrets.Allies.FirstOrDefault(t => t.IsInRange(Player.Instance, 920));
-            if (tower == null)
+            if (tower == null && Settings.KeyAutoHarass)
             {
                 
-                if (Q.IsReady() && E.IsReady() && target.IsValidTarget(QE.Range) && Settings.UseQ && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                if (Q.IsReady() && E.IsReady() && target.IsValidTarget(QE.Range) && Settings.UseAutoQ && Settings.UseAutoE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                 {
                     Functions.QE(QE.GetPrediction(target).CastPosition);
                 }
                 else
                 {
-                    if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                    if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseAutoQ && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                     {
                         Q.Cast(target);
                     }
 
-                    if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                    if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseAutoE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                     {
                         E.Cast(target);
                     }
                 }
 
-                if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
+                if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseAutoE && Player.Instance.ManaPercent > Settings.ManaAutoHarass)
                 {
                     if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 500 < Environment.TickCount)
                     {
