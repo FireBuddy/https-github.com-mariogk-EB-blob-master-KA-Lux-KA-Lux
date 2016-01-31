@@ -25,6 +25,7 @@ namespace KA_Lux.Modes
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(E.GetPrediction(target).CastPosition);
+                PermaActive.CastedE = true;
             }
         }
     }

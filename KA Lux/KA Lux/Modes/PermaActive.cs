@@ -8,6 +8,7 @@ namespace KA_Lux.Modes
 {
     public sealed class PermaActive : ModeBase
     {
+        public static bool CastedE;
         public override bool ShouldBeExecuted()
         {
             return true;
@@ -15,22 +16,37 @@ namespace KA_Lux.Modes
 
         public override void Execute()
         {
+            if (CastedE)
+            {
+                if (E.IsReady())
+                {
+                    E.Cast(Player.Instance);
+                }
+                else
+                {
+                    CastedE = false;
+                }
+            }
+
             if (R.IsReady() && Settings.KillStealR && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
                 if (targetR != null && !targetR.IsZombie && !targetR.HasUndyingBuff())
                 {
                     if (targetR.Health <= SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
-                        !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 150)
+                        !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 80)
                     {
-                        Chat.Print("Can Ult");
                         if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                         {
                             R.Cast(targetR.Position);
                         }
-                        else
+                        else if (targetR.HasBuffOfType(BuffType.Slow))
                         {
                             R.Cast(R.GetPrediction(targetR).CastPosition);
+                        }
+                        else
+                        {
+                            R.Cast(Prediction.Position.PredictUnitPosition(targetR, 500).To3D());
                         }
                     }
                 }
@@ -40,7 +56,6 @@ namespace KA_Lux.Modes
             {
                 if (Player.Instance.InDanger(80))
                 {
-                    Chat.Print("InDanger");
                     W.Cast(Player.Instance);
                 }
             }
@@ -51,7 +66,7 @@ namespace KA_Lux.Modes
                 if (targetQ != null && !targetQ.IsZombie && !targetQ.HasUndyingBuff())
                 {
 
-                    if (targetQ.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, targetQ) &&
+                    if (Prediction.Health.GetPrediction(targetQ, Q.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.Q, targetQ) &&
                         !targetQ.IsInAutoAttackRange(Player.Instance) && targetQ.Health > 80)
                     {
                         Q.Cast(Q.GetPrediction(targetQ).CastPosition);
@@ -64,7 +79,7 @@ namespace KA_Lux.Modes
                 var targetE = TargetSelector.GetTarget(E.Range, DamageType.Magical);
                 if (targetE != null && !targetE.IsZombie && !targetE.HasUndyingBuff())
                 {
-                    if (targetE.Health <= SpellDamage.GetRealDamage(SpellSlot.E, targetE) &&
+                    if (Prediction.Health.GetPrediction(targetE, E.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.E, targetE) &&
                         !targetE.IsInAutoAttackRange(Player.Instance) && targetE.Health > 80)
                     {
                         E.Cast(E.GetPrediction(targetE).CastPosition);
@@ -80,7 +95,7 @@ namespace KA_Lux.Modes
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
                             .FirstOrDefault(
                                 m =>
-                                    m.Health < SpellDamage.GetRealDamage(SpellSlot.R, m) + 90 &&
+                                    Prediction.Health.GetPrediction(m, R.CastDelay) < SpellDamage.GetRealDamage(SpellSlot.R, m) + 90 &&
                                     m.IsValidTarget(R.Range) &&
                                     m.BaseSkinName == "SRU_Blue" && !m.IsInRange(Player.Instance, 1200) && m.Health > 100);
                     if (blue != null)
@@ -95,7 +110,7 @@ namespace KA_Lux.Modes
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
                             .FirstOrDefault(
                                 m =>
-                                    m.Health < SpellDamage.GetRealDamage(SpellSlot.R, m) + 90 &&
+                                    Prediction.Health.GetPrediction(m, R.CastDelay) < SpellDamage.GetRealDamage(SpellSlot.R, m) + 90 &&
                                     m.IsValidTarget(R.Range) &&
                                     m.BaseSkinName == "SRU_Red" && !m.IsInRange(Player.Instance, 1200) && m.Health > 100);
                     if (red != null)
@@ -110,7 +125,7 @@ namespace KA_Lux.Modes
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
                             .FirstOrDefault(
                                 m =>
-                                    m.Health < SpellDamage.GetRealDamage(SpellSlot.R, m) + 180 &&
+                                    Prediction.Health.GetPrediction(m, R.CastDelay) < SpellDamage.GetRealDamage(SpellSlot.R, m) + 180 &&
                                     m.IsValidTarget(R.Range) &&
                                     m.BaseSkinName == "SRU_Dragon" && !m.IsInRange(Player.Instance, 1200) &&
                                     m.Health > 80);
@@ -127,7 +142,7 @@ namespace KA_Lux.Modes
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
                             .FirstOrDefault(
                                 m =>
-                                    m.Health < SpellDamage.GetRealDamage(SpellSlot.R, m) + 180 &&
+                                    Prediction.Health.GetPrediction(m, R.CastDelay) < SpellDamage.GetRealDamage(SpellSlot.R, m) + 180 &&
                                     m.IsValidTarget(R.Range) &&
                                     m.BaseSkinName == "SRU_Baron" && !m.IsInRange(Player.Instance, 1200) &&
                                     m.Health > 80);

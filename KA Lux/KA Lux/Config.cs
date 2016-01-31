@@ -99,7 +99,7 @@ namespace KA_Lux
                     SpellsMenu.AddGroupLabel("Combo Spells:");
                     _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
-                    _useESnared = SpellsMenu.Add("comboESnared", new CheckBox("Only use E if target is snared ?"));
+                    _useESnared = SpellsMenu.Add("comboESnared", new CheckBox("Only use E if target is snared ?", false));
                     _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
                     _useRSnared = SpellsMenu.Add("comboRSnared", new CheckBox("Only use R if target is snared ?"));
                 }

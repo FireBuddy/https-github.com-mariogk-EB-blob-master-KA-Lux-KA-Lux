@@ -24,6 +24,7 @@ namespace KA_Lux.Modes
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(jgminion);
+                PermaActive.CastedE = true;
             }
 
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)

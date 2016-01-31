@@ -27,6 +27,7 @@ namespace KA_Lux.Modes
                 : target.IsValidTarget(E.Range))
             {
                 E.Cast(E.GetPrediction(target).CastPosition);
+                PermaActive.CastedE = true;
             }
 
             if (R.IsReady() && Settings.UseR)
@@ -40,9 +41,13 @@ namespace KA_Lux.Modes
                     {
                         R.Cast(targetR.Position);
                     }
-                    else
+                    else if (targetR.HasBuffOfType(BuffType.Slow))
                     {
                         R.Cast(R.GetPrediction(targetR).CastPosition);
+                    }
+                    else
+                    {
+                        R.Cast(Prediction.Position.PredictUnitPosition(targetR, 500).To3D());
                     }
                 }
             }

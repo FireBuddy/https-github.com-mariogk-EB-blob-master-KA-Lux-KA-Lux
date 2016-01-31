@@ -99,15 +99,6 @@ namespace KA_Lux.DMGHandler
             }
             return false;
         }
-
-        public static bool InDangerDanger(this AIHeroClient hero, int HealthPercent)
-        {
-            if (ReceivingDangSpell && Player.Instance.HealthPercent < HealthPercent)
-            {
-                return true;
-            }
-            return false;
-        }
         #endregion Extensions
     }
 }

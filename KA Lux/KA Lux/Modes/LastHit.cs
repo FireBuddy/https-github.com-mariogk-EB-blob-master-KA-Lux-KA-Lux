@@ -41,6 +41,7 @@ namespace KA_Lux.Modes
                 if (predictedMinion.Length >= Settings.ECount)
                 {
                     E.Cast(farmLocation.CastPosition);
+                    PermaActive.CastedE = true;
                 }
             }
         }

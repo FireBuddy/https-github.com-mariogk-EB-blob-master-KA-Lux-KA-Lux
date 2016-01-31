@@ -2,6 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK.Rendering;
 using KA_Lux;
+using KA_Lux.DMGHandler;
 using Settings = KA_Lux.Config.Modes.Draw;
 
 namespace KA_Lux
@@ -10,6 +11,7 @@ namespace KA_Lux
     {
         public static void Initialize()
         {
+            DamageHandler.Initialize();
             Config.Initialize();
             SpellManager.Initialize();
             ModeManager.Initialize();

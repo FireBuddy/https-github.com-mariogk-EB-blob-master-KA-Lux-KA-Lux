@@ -13,21 +13,21 @@ namespace KA_Lux
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 70)
+            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 65)
             {
-               MinimumHitChance = HitChance.High, AllowedCollisionCount = 1
+                AllowedCollisionCount = 1
             };
-            W = new Spell.Skillshot(SpellSlot.W, 1175, SkillShotType.Linear, 250 , 1200, 150)
+            W = new Spell.Skillshot(SpellSlot.W, 1075, SkillShotType.Linear, 0, 1400, 85)
             {
-                AllowedCollisionCount = int.MaxValue
+                AllowedCollisionCount = int.MaxValue 
             };
-            E = new Spell.Skillshot(SpellSlot.E, 1250, SkillShotType.Circular, 250, 1530, 60)
+            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Circular, 250, 1300, 350)
             {
-                AllowedCollisionCount = int.MaxValue
+                AllowedCollisionCount = int.MaxValue 
             };
-            R = new Spell.Skillshot(SpellSlot.R, 3300, SkillShotType.Linear, 1000, 3000, 110)
+            R = new Spell.Skillshot(SpellSlot.R, 3340, SkillShotType.Circular, 500, int.MaxValue, 160)
             {
-                AllowedCollisionCount = int.MaxValue, MinimumHitChance = HitChance.High
+                AllowedCollisionCount = int.MaxValue 
             };
         }
 
