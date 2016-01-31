@@ -155,11 +155,11 @@ namespace KA_Syndra
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                     SpellsMenu.AddGroupLabel("AutoHarass Spells:");
-                    _useQ = SpellsMenu.Add("autoharassQ", new CheckBox("Use Q on AutoHarass ?"));
-                    _useW = SpellsMenu.Add("autoharassW", new CheckBox("Use W on AutoHarass ?"));
-                    _useE = SpellsMenu.Add("autoharassE", new CheckBox("Use E on AutoHarass ?", false));
+                    _useAutoQ = SpellsMenu.Add("autoharassQ", new CheckBox("Use Q on AutoHarass ?"));
+                    _useAutoW = SpellsMenu.Add("autoharassW", new CheckBox("Use W on AutoHarass ?"));
+                    _useAutoE = SpellsMenu.Add("autoharassE", new CheckBox("Use E on AutoHarass ?", false));
                     SpellsMenu.AddGroupLabel("AutoHarass Settings:");
-                    _manaHarass = SpellsMenu.Add("autoharassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
+                    _manaAutoHarass = SpellsMenu.Add("autoharassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()

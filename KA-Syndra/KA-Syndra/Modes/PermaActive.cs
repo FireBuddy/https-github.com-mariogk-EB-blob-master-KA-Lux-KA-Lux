@@ -19,6 +19,7 @@ namespace KA_Syndra.Modes
         {
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
+            Console.WriteLine(SpellDamage.GetRealDamage(SpellSlot.R, target));
             //RKS
             if (SpellManager.R.IsReady() && target.IsValidTarget(R.Range) &&
                 target.Health <= SpellDamage.GetRealDamage(SpellSlot.R, target) && target.Health > Misc.OverkillR)
@@ -62,7 +63,6 @@ namespace KA_Syndra.Modes
                     }
                 }
             }
-
         }
     }
 }
