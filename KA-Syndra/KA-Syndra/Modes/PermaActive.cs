@@ -16,7 +16,7 @@ namespace KA_Syndra.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+            var target = TargetSelector.GetTarget(R.Range, DamageType.Magical);
             if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
             if (SpellManager.R.IsReady() && target.IsValidTarget(R.Range) &&

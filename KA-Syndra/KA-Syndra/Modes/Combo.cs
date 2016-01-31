@@ -21,6 +21,12 @@ namespace KA_Syndra.Modes
             var target = TargetSelector.GetTarget(QE.Range, DamageType.Magical);
             if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR &&
+                target.Health <= SpellDamage.GetRealDamage(SpellSlot.R, target) && target.Health > Misc.OverkillR)
+            {
+                R.Cast(target);
+            }
+
             if (Q.IsReady() && E.IsReady() && target.IsValidTarget(QE.Range) && Settings.UseQ && Settings.UseE)
             {
                 Functions.QE(QE.GetPrediction(target).CastPosition);
@@ -40,7 +46,8 @@ namespace KA_Syndra.Modes
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast +500 < Environment.TickCount)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 &&
+                    lastWCast + 500 < Environment.TickCount)
                 {
                     W.Cast(Functions.GrabWPost(false));
                     lastWCast = Environment.TickCount;
@@ -50,12 +57,6 @@ namespace KA_Syndra.Modes
                 {
                     W.Cast(W.GetPrediction(target).CastPosition);
                 }
-            }
-
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR &&
-                target.Health <= SpellDamage.GetRealDamage(SpellSlot.R, target) && target.Health > Misc.OverkillR)
-            {
-                R.Cast(target);
             }
         }
     }
