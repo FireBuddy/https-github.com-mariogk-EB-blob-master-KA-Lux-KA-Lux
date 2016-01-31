@@ -46,7 +46,7 @@ namespace KA_Lux.Modes
                         }
                         else
                         {
-                            R.Cast(Prediction.Position.PredictUnitPosition(targetR, 500).To3D());
+                            R.Cast(Prediction.Position.PredictUnitPosition(targetR, R.CastDelay).To3D());
                         }
                     }
                 }
