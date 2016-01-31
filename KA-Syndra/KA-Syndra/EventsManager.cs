@@ -30,7 +30,7 @@ namespace KA_Syndra
 
             if (sender.IsValidTarget(SpellManager.E.Range))
             {
-                //QE Combo
+                Functions.QE(sender.Position);
             }
         }
 
@@ -40,7 +40,7 @@ namespace KA_Syndra
 
             if (e.DangerLevel == DangerLevel.High)
             {
-                //QE Combo
+                Functions.QE(sender.Position);
             }
         }
     }
