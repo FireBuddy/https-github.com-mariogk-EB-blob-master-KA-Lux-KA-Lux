@@ -182,7 +182,6 @@ namespace KA_Syndra
             {
                 private static readonly CheckBox _useQ;
                 private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
@@ -194,17 +193,12 @@ namespace KA_Syndra
                     get { return _lastMana.CurrentValue; }
                 }
 
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
-
                 static LastHit()
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
+                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
