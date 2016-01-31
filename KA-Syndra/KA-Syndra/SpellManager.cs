@@ -28,7 +28,7 @@ namespace KA_Syndra
             };
             R = new Spell.Targeted(SpellSlot.R, 695);
 
-            QE = new Spell.Skillshot(SpellSlot.W, 1050, SkillShotType.Linear, 700, 1900, 20)
+            QE = new Spell.Skillshot(SpellSlot.W, 1050, SkillShotType.Linear, 500, 1500, 20)
             {
                 AllowedCollisionCount = int.MaxValue
             };
