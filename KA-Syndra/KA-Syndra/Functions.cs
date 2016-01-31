@@ -36,6 +36,15 @@ namespace KA_Syndra
             return ObjectManager.Get<Obj_AI_Base>().Count(a => a.Name == "Seed" && a.IsValid);
         }
 
+        public static int SpheresCountR()
+        {
+            if (ObjectManager.Get<Obj_AI_Base>().Count(a => a.Name == "Seed" && a.IsValid) <= 3)
+            {
+                return 3;
+            }
+            return ObjectManager.Get<Obj_AI_Base>().Count(a => a.Name == "Seed" && a.IsValid);
+        }
+
         public static void QE(Vector3 position)
         {
             if (SpellManager.Q.IsReady() && SpellManager.E.IsReady())

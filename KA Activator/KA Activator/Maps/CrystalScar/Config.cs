@@ -957,7 +957,7 @@ namespace KA_Activator.Maps.CrystalScar
                     _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
                     _DelayOff = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
                     SettingsMenu.AddGroupLabel("Consumables Settings");
-                    _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
+                    _AAcancel = SettingsMenu.Add("consumableRangeCheck", new CheckBox("Check enemies in range ?"));
                     SettingsMenu.AddGroupLabel("Danger Settings");
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1600, 600, 2500));

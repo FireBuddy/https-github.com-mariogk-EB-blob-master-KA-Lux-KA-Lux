@@ -252,7 +252,7 @@ namespace KA_Syndra
                     _antiGapCloserSpell = MiscMenu.Add("gapcloserQE", new CheckBox("Use QE to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                     MiscMenu.AddGroupLabel("R KS Settings");
-                    _useRToKS = MiscMenu.Add("gapcloserQE", new CheckBox("Use R to kill steal ?"));
+                    _useRToKS = MiscMenu.Add("useRtoKS", new CheckBox("Use R to kill steal ?"));
                     _overKillR = MiscMenu.Add("overkillR", new Slider("Target`s health must be greater than ({0}) to use R ?", 250, 0 , 800));
                 }
 
