@@ -28,8 +28,12 @@ namespace KA_Lux.Modes
             }
 
             var minions =
-                           EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
-                               Player.Instance.Position, E.Range, false).Where(m => m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m)).ToArray();
+                EntityManager.MinionsAndMonsters.GetLaneMinions()
+                    .Where(
+                        m =>
+                            m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m) && m.IsEnemy &&
+                            m.IsValidTarget(E.Range))
+                    .ToArray();
             if (minions.Length == 0) return;
 
             var farmLocation = Prediction.Position.PredictCircularMissileAoe(minions, E.Range, E.Width,
