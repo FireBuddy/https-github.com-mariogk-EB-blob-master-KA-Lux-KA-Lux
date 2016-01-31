@@ -20,7 +20,7 @@ namespace KA_Syndra
             };
             W = new Spell.Skillshot(SpellSlot.W, 925, SkillShotType.Circular, 350 , 1500, 130)
             {
-                AllowedCollisionCount = int.MaxValue
+                AllowedCollisionCount = int.MaxValue, MinimumHitChance = HitChance.High
             };
             E = new Spell.Skillshot(SpellSlot.E, 690, SkillShotType.Cone, 250, 2500, 50)
             {
