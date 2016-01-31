@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using Settings = KA_Syndra.Config.Modes.LaneClear;
@@ -28,13 +29,13 @@ namespace KA_Syndra.Modes
 
             if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Game.TicksPerSecond)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Environment.TickCount)
                 {
                     W.Cast(Functions.GrabWPost(false));
-                    lastWCast = Game.TicksPerSecond;
+                    lastWCast = Environment.TickCount;
                 }
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
-                    lastWCast + 100 < Game.TicksPerSecond)
+                    lastWCast + 100 < Environment.TickCount)
                 {
                     W.Cast(W.GetPrediction(jgminion).CastPosition);
                 }
