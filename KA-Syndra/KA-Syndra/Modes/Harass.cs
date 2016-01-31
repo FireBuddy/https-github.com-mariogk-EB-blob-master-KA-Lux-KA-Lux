@@ -35,12 +35,12 @@ namespace KA_Syndra.Modes
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Game.TicksPerSecond)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 500 < Game.TicksPerSecond)
                 {
                     W.Cast(Functions.GrabWPost(false));
                     lastWCast = Game.TicksPerSecond;
                 }
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 &&
                     lastWCast + 100 < Game.TicksPerSecond)
                 {
                     W.Cast(W.GetPrediction(target).CastPosition);
