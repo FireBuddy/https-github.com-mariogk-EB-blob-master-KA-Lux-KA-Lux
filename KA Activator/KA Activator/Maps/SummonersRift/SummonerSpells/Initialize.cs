@@ -1,4 +1,4 @@
-﻿using KA_Activator.Maps.Twistedtreeline.SummonerSpells.Spells;
+﻿using KA_Activator.Maps.SummonersRift.SummonerSpells.Spells;
 
 namespace KA_Activator.Maps.SummonersRift.SummonerSpells
 {

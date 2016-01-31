@@ -923,6 +923,7 @@ namespace KA_Activator.Maps.CrystalScar
                 private static readonly CheckBox Spells;
                 private static readonly CheckBox Skillshots;
                 private static readonly CheckBox AAs;
+                private static readonly CheckBox DisableRangeCheck;
 
 
                 public static int RangeEnemy
@@ -955,9 +956,11 @@ namespace KA_Activator.Maps.CrystalScar
                     SettingsMenu.AddGroupLabel("Offensive Settings");
                     _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
                     _DelayOff = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
+                    SettingsMenu.AddGroupLabel("Consumables Settings");
+                    _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
                     SettingsMenu.AddGroupLabel("Danger Settings");
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
-                    EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1000, 600, 2500));
+                    EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1600, 600, 2500));
                     Spells = SettingsMenu.Add("considerspells", new CheckBox("Consider spells ?"));
                     Skillshots = SettingsMenu.Add("considerskilshots", new CheckBox("Consider SkillShots ?"));
                     AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
