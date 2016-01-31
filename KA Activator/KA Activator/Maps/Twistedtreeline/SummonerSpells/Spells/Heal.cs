@@ -4,8 +4,8 @@ using EloBuddy;
 using EloBuddy.SDK;
 using KA_Activator.Maps.Twistedtreeline.DMGHandler;
 
-using Misc = KA_Activator.Maps.SummonersRift.Config.Types.Settings;
-using Settings = KA_Activator.Maps.SummonersRift.Config.Types.SummonerSpells;
+using Misc = KA_Activator.Maps.Twistedtreeline.Config.Types.Settings;
+using Settings = KA_Activator.Maps.Twistedtreeline.Config.Types.SummonerSpells;
 
 namespace KA_Activator.Maps.Twistedtreeline.SummonerSpells.Spells
 {
