@@ -13,10 +13,7 @@ namespace KA_Lux
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 65)
-            {
-                AllowedCollisionCount = 1
-            };
+            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 65);
             W = new Spell.Skillshot(SpellSlot.W, 1075, SkillShotType.Linear, 0, 1400, 85)
             {
                 AllowedCollisionCount = int.MaxValue 

@@ -1,6 +1,7 @@
 ﻿using EloBuddy.SDK;
+using KickassSeries.Champions.Ezreal;
 
-namespace KickassSeries.Champions.Ezreal.Modes
+namespace KA_Ezreal.Modes
 {
     public abstract class ModeBase
     {

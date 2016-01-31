@@ -50,7 +50,7 @@ namespace KA_Ezreal.Modes
                 var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget(Settings.MinR)).ToArray();
                 if(enemies.Length == 0)return;
 
-                R.GetPrediction()
+                Prediction.Position.PredictLinearMissile(target, R.ra)
             }
 
         }

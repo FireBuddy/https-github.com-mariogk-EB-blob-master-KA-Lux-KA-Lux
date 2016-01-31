@@ -38,7 +38,7 @@ namespace KA_Syndra
 
         public static int SpheresCountR()
         {
-            if (ObjectManager.Get<Obj_AI_Base>().Count(a => a.Name == "Seed" && a.IsValid) <= 3)
+            if (ObjectManager.Get<Obj_AI_Base>().Count(a => a.Name == "Seed" && a.IsValid) < 3)
             {
                 return 3;
             }
