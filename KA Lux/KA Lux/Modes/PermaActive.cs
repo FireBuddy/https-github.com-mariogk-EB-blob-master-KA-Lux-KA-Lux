@@ -19,11 +19,8 @@ namespace KA_Lux.Modes
         {
             if (CastedE)
             {
-                Chat.Print("Casted E = "+ CastedE);
-                Chat.Print("Toogle state E = " + Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState);
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2)
                 {
-                    Chat.Print("Closing E");
                     E.Cast(Player.Instance);
                     CastedE = false;
                 }
