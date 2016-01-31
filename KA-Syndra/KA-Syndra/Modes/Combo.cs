@@ -14,7 +14,7 @@ namespace KA_Syndra.Modes
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo);
         }
 
-        public static int lastWCast;
+        private static int lastWCast;
 
         public override void Execute()
         {

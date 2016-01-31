@@ -82,7 +82,10 @@ namespace KA_Syndra
                     {
                         var color = new Color(Settings.HealthColor.R, Settings.HealthColor.G, Settings.HealthColor.B, Settings.HealthColor.A - 5);
                         _Font.DrawText(null, string.Concat(Math.Ceiling(damage / unit.TotalShieldHealth() * 100), "%"), (int)unit.HPBarPosition[0] + 102, (int)unit.HPBarPosition[1] + 29, color);
-                        _Font2.DrawText(null, "-"+ Math.Round(SpellDamage.GetTotalDamage(unit)) + " / "+ Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] + 82, (int)unit.HPBarPosition[1] -9, color);
+                        if (Settings.DrawStatistics)
+                        {
+                            _Font2.DrawText(null, "-" + Math.Round(SpellDamage.GetTotalDamage(unit)) + " / " + Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] + 82, (int)unit.HPBarPosition[1] - 9, color);
+                        }
                     }
                 }
             }

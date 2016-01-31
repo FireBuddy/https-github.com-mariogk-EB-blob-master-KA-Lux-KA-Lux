@@ -100,6 +100,11 @@ namespace KA_Syndra
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly Slider _manaHarass;
+                //Auto
+                private static readonly CheckBox _useAutoQ;
+                private static readonly CheckBox _useAutoW;
+                private static readonly CheckBox _useAutoE;
+                private static readonly Slider _manaAutoHarass;
 
                 public static bool UseQ
                 {
@@ -120,6 +125,26 @@ namespace KA_Syndra
                 {
                     get { return _manaHarass.CurrentValue; }
                 }
+                //Auto
+                public static bool UseAutoQ
+                {
+                    get { return _useAutoQ.CurrentValue; }
+                }
+
+                public static bool UseAutoW
+                {
+                    get { return _useAutoW.CurrentValue; }
+                }
+
+                public static bool UseAutoE
+                {
+                    get { return _useAutoE.CurrentValue; }
+                }
+
+                public static int ManaAutoHarass
+                {
+                    get { return _manaAutoHarass.CurrentValue; }
+                }
 
                 static Harass()
                 {
@@ -129,6 +154,12 @@ namespace KA_Syndra
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
+                    SpellsMenu.AddGroupLabel("AutoHarass Spells:");
+                    _useQ = SpellsMenu.Add("autoharassQ", new CheckBox("Use Q on AutoHarass ?"));
+                    _useW = SpellsMenu.Add("autoharassW", new CheckBox("Use W on AutoHarass ?"));
+                    _useE = SpellsMenu.Add("autoharassE", new CheckBox("Use E on AutoHarass ?", false));
+                    SpellsMenu.AddGroupLabel("AutoHarass Settings:");
+                    _manaHarass = SpellsMenu.Add("autoharassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -260,6 +291,7 @@ namespace KA_Syndra
                 private static readonly CheckBox _drawReady;
                 private static readonly CheckBox _drawHealth;
                 private static readonly CheckBox _drawPercent;
+                private static readonly CheckBox _drawStatiscs;
                 private static readonly CheckBox _drawQ;
                 private static readonly CheckBox _drawW;
                 private static readonly CheckBox _drawE;
@@ -289,6 +321,11 @@ namespace KA_Syndra
                 public static bool DrawPercent
                 {
                     get { return _drawPercent.CurrentValue; }
+                }
+
+                public static bool DrawStatistics
+                {
+                    get { return _drawStatiscs.CurrentValue; }
                 }
 
                 public static bool DrawQ
@@ -350,6 +387,7 @@ namespace KA_Syndra
                     _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
                     _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
                     _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
+                    _drawStatiscs = DrawMenu.Add("statiscsIndicatorDraw", new CheckBox("Draw damage statistics ?"));
                     DrawMenu.AddSeparator(1);
                     _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
                     _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
