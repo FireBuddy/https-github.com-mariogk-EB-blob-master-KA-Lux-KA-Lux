@@ -74,8 +74,7 @@ namespace KA_Syndra
                     break;
 
                 case SpellSlot.R:
-                    damage = (new float[] {90, 135, 180}[spellLevel] + 0.2f*Player.Instance.FlatMagicDamageMod)*
-                             Functions.SpheresCountR();
+                    damage = (new float[] {90, 135, 180}[spellLevel] + 0.2f*Player.Instance.FlatMagicDamageMod)* (Functions.SpheresCount() + 3);
                     break;
             }
 
