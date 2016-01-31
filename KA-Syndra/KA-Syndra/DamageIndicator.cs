@@ -17,7 +17,7 @@ namespace KA_Syndra
 
         private static DamageToUnitDelegate DamageToUnit { get; set; }
 
-        private static Font _Font;
+        private static Font _Font, _Font2;
 
         public static void Initialize(DamageToUnitDelegate damageToUnit)
         {
@@ -30,8 +30,23 @@ namespace KA_Syndra
                 {
                     FaceName = "Segoi UI",
                     Height = 18,
+                    Weight = FontWeight.Bold,
                     OutputPrecision = FontPrecision.Default,
-                    Quality = FontQuality.Default
+                    Quality = FontQuality.ClearType,
+                    
+                    
+                });
+
+            _Font2 = new Font(
+                Drawing.Direct3DDevice,
+                new FontDescription
+                {
+                    FaceName = "Segoi UI",
+                    Height = 12,
+                    Weight = FontWeight.Bold,
+                    OutputPrecision = FontPrecision.Default,
+                    Quality = FontQuality.ClearType,
+
                 });
         }
 
@@ -67,6 +82,7 @@ namespace KA_Syndra
                     {
                         var color = new Color(Settings.HealthColor.R, Settings.HealthColor.G, Settings.HealthColor.B, Settings.HealthColor.A - 5);
                         _Font.DrawText(null, string.Concat(Math.Ceiling(damage / unit.TotalShieldHealth() * 100), "%"), (int)unit.HPBarPosition[0] + 102, (int)unit.HPBarPosition[1] + 29, color);
+                        _Font2.DrawText(null, "-"+ Math.Round(SpellDamage.GetTotalDamage(unit)) + " / "+ Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] + 82, (int)unit.HPBarPosition[1] -9, color);
                     }
                 }
             }
