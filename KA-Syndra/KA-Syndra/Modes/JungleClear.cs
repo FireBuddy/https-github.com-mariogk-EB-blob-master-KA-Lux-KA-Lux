@@ -29,13 +29,13 @@ namespace KA_Syndra.Modes
 
             if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 500 < Environment.TickCount)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && lastWCast + 700 < Environment.TickCount)
                 {
-                    W.Cast(Functions.GrabWPost(false));
+                    W.Cast(Functions.GrabWPost(true));
                     lastWCast = Environment.TickCount;
                 }
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 1 &&
-                    lastWCast + 100 < Environment.TickCount)
+                    lastWCast + 300 < Environment.TickCount)
                 {
                     W.Cast(W.GetPrediction(jgminion).CastPosition);
                 }

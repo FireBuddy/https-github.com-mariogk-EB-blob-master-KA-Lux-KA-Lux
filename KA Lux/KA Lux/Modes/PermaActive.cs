@@ -19,7 +19,7 @@ namespace KA_Lux.Modes
         {
             if (CastedE)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 || Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1)
                 {
                     E.Cast(Player.Instance);
                     CastedE = false;

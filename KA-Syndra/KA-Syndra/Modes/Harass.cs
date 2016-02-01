@@ -36,13 +36,13 @@ namespace KA_Syndra.Modes
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Player.Instance.ManaPercent > Settings.ManaHarass)
             {
-                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 500 < Environment.TickCount)
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState != 2 && lastWCast + 700 < Environment.TickCount)
                 {
                     W.Cast(Functions.GrabWPost(false));
                     lastWCast = Environment.TickCount;
                 }
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 &&
-                    lastWCast + 100 < Environment.TickCount)
+                    lastWCast + 300 < Environment.TickCount)
                 {
                     W.Cast(W.GetPrediction(target).CastPosition);
                 }
