@@ -43,7 +43,7 @@ namespace KA_Activator.Maps.SummonersRift.DMGHandler
                 DangerousSpells.Spells.FirstOrDefault(
                     x =>
                         x.Hero == hero.Hero && args.Slot == x.Slot &&
-                        Twistedtreeline.Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
+                        Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
             //SkilShot
             if (args.Target == null)
             {
