@@ -8,10 +8,12 @@ using Settings = KA_Syndra.Config.Modes.Draw;
 
 namespace KA_Syndra
 {
-     class Syndra
+    internal class Syndra
     {
         public static void Initialize()
         {
+            if(Player.Instance.ChampionName != "Syndra")return;
+
             Config.Initialize();
             SpellManager.Initialize();
             ModeManager.Initialize();

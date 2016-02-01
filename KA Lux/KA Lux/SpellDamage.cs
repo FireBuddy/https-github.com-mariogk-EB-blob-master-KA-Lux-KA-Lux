@@ -85,7 +85,7 @@ namespace KA_Lux
                 return 0;
             }
 
-            return Player.Instance.CalculateDamageOnUnit(target, damageType, damage) - 30;
+            return Player.Instance.CalculateDamageOnUnit(target, damageType, damage) - 20;
         }
     }
 }

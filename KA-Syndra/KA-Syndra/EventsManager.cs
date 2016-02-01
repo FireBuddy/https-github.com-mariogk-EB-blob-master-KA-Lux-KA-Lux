@@ -28,7 +28,7 @@ namespace KA_Syndra
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.E.Range))
+            if (sender.IsValidTarget(SpellManager.QE.Range))
             {
                 Functions.QE(sender.Position);
             }
@@ -38,7 +38,7 @@ namespace KA_Syndra
         {
             if (!sender.IsEnemy) return;
 
-            if (e.DangerLevel == DangerLevel.High)
+            if (e.DangerLevel == DangerLevel.High && sender.IsValidTarget(SpellManager.QE.Range))
             {
                 Functions.QE(sender.Position);
             }
