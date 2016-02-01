@@ -4,6 +4,8 @@ using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Events;
 using SharpDX;
 
+using Settings = KA_Syndra.Config.Modes.Misc;
+
 namespace KA_Syndra
 {
     internal static class EventsManager
@@ -28,7 +30,7 @@ namespace KA_Syndra
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.QE.Range))
+            if (sender.IsValidTarget(SpellManager.QE.Range) && Player.Instance.ManaPercent >= Settings.MiscMana && Settings.AntiGapCloser)
             {
                 Functions.QE(sender.Position);
             }
@@ -38,7 +40,7 @@ namespace KA_Syndra
         {
             if (!sender.IsEnemy) return;
 
-            if (e.DangerLevel == DangerLevel.High && sender.IsValidTarget(SpellManager.QE.Range))
+            if (e.DangerLevel == DangerLevel.High && sender.IsValidTarget(SpellManager.QE.Range) && Player.Instance.ManaPercent >= Settings.MiscMana && Settings.InterruptSpell)
             {
                 Functions.QE(sender.Position);
             }
