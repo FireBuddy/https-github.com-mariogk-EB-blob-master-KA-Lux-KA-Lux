@@ -35,8 +35,8 @@ namespace KA_Lux.Modes
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
                 if (targetR != null && !targetR.IsZombie && !targetR.HasUndyingBuff())
                 {
-                    if (targetR.Health <= SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
-                        !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 80)
+                    if (Prediction.Health.GetPrediction(targetR, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
+                        !targetR.IsInAutoAttackRange(Player.Instance) && Prediction.Health.GetPrediction(targetR, R.CastDelay) > 80)
                     {
                         if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                         {

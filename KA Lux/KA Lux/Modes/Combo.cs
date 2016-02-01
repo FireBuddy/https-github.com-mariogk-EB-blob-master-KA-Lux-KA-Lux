@@ -35,7 +35,7 @@ namespace KA_Lux.Modes
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
                 if(targetR == null)return;
 
-                if (target.IsValidTarget(R.Range) && Settings.UseRSnared? target.HasBuffOfType(BuffType.Snare): target.IsValidTarget(R.Range))
+                if (target.IsValidTarget(R.Range) && Settings.UseRSnared? target.HasBuffOfType(BuffType.Snare): target.IsValidTarget(R.Range) && Prediction.Health.GetPrediction(targetR, R.CastDelay) > 100)
                 {
                     if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                     {
