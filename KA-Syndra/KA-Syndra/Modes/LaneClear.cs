@@ -35,7 +35,7 @@ namespace KA_Syndra.Modes
                     lastWCast = Environment.TickCount;
                 }
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 &&
-                    lastWCast + 300 < Environment.TickCount)
+                    lastWCast + 200 < Environment.TickCount)
                 {
                     W.Cast(W.GetPrediction(minion).CastPosition);
                 }

@@ -14,7 +14,7 @@ namespace KA_Syndra
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 830, SkillShotType.Circular, 600, int.MaxValue, 125)
+            Q = new Spell.Skillshot(SpellSlot.Q, 820, SkillShotType.Circular, 600, int.MaxValue, 125)
             {
                 AllowedCollisionCount = int.MaxValue
             };
@@ -28,7 +28,7 @@ namespace KA_Syndra
             };
             R = new Spell.Targeted(SpellSlot.R, 695);
 
-            QE = new Spell.Skillshot(SpellSlot.W, 950, SkillShotType.Linear, 600, 2500, 15)
+            QE = new Spell.Skillshot(SpellSlot.W, 980, SkillShotType.Linear, 600, 2400, 18)
             {
                 AllowedCollisionCount = int.MaxValue
             };
