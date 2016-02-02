@@ -13,9 +13,9 @@ namespace KA_Lux
         {
             if(Player.Instance.ChampionName != "Lux")return;
 
+            SpellManager.Initialize();
             DamageHandler.Initialize();
             Config.Initialize();
-            SpellManager.Initialize();
             ModeManager.Initialize();
             DamageIndicator.Initialize(SpellDamage.GetTotalDamage);
             EventsManager.Initialize();

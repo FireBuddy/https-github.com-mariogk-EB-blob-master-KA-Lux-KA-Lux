@@ -21,7 +21,7 @@ namespace KA_Syndra.Modes
             if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
             //RKS
             if (SpellManager.R.IsReady() && target.IsValidTarget(R.Range) &&
-                target.Health <= SpellDamage.GetRealDamage(SpellSlot.R, target) && target.Health > Misc.OverkillR)
+                Prediction.Health.GetPrediction(target, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, target) && Prediction.Health.GetPrediction(target, R.CastDelay) > Misc.OverkillR)
             {
                 R.Cast(target);
             }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KA_Lux.DMGHandler;
+
 using Settings = KA_Lux.Config.Modes.Misc;
 
 namespace KA_Lux.Modes
@@ -17,6 +17,8 @@ namespace KA_Lux.Modes
 
         public override void Execute()
         {
+            Q.AllowedCollisionCount = 1;
+
             if (CastedE)
             {
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 || Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1)
@@ -36,7 +38,7 @@ namespace KA_Lux.Modes
                 if (targetR != null && !targetR.IsZombie && !targetR.HasUndyingBuff() && targetR.CountAlliesInRange(1000) <= 3)
                 {
                     if (Prediction.Health.GetPrediction(targetR, 1000) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)
-                        && Prediction.Health.GetPrediction(targetR, 1000) > targetR.CountAlliesInRange(1000) * 120)
+                        && Prediction.Health.GetPrediction(targetR, 1000) > targetR.CountAlliesInRange(1000) * 90)
                     {
                         if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                         {

@@ -1,0 +1,12 @@
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\CollTest.exe.config
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\CollTest.exe
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\CollTest.pdb
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\obj\Debug\CollTest.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\obj\Debug\CollTest.exe
+C:\Users\Mario\Documents\GitHub\EB\CollTest\CollTest\obj\Debug\CollTest.pdb
