@@ -13,22 +13,24 @@ namespace KA_Lux
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 58)
+            Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 500, 1200, 65)
             {
-                MinimumHitChance = HitChance.High
+                AllowedCollisionCount = 1
             };
             W = new Spell.Skillshot(SpellSlot.W, 1075, SkillShotType.Linear, 0, 1400, 85)
             {
                 AllowedCollisionCount = int.MaxValue 
             };
-            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Circular, 250, 1300, 350)
+            E = new Spell.Skillshot(SpellSlot.E, 1050, SkillShotType.Circular, 500, 1300, 330)
             {
                 AllowedCollisionCount = int.MaxValue 
             };
-            R = new Spell.Skillshot(SpellSlot.R, 3290, SkillShotType.Circular, 1000, 2500, 140)
+            R = new Spell.Skillshot(SpellSlot.R, 3290, SkillShotType.Circular, 1750, 3000, 170)
             {
                 AllowedCollisionCount = int.MaxValue 
             };
+
+            Q.AllowedCollisionCount = 1;
         }
 
         public static void Initialize()
