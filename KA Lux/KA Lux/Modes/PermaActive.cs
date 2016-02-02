@@ -33,10 +33,10 @@ namespace KA_Lux.Modes
             if (R.IsReady() && Settings.KillStealR && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
-                if (targetR != null && !targetR.IsZombie && !targetR.HasUndyingBuff())
+                if (targetR != null && !targetR.IsZombie && !targetR.HasUndyingBuff() && targetR.CountAlliesInRange(1000) <= 3)
                 {
-                    if (Prediction.Health.GetPrediction(targetR, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)
-                        && Prediction.Health.GetPrediction(targetR, R.CastDelay) > 10)
+                    if (Prediction.Health.GetPrediction(targetR, 1000) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)
+                        && Prediction.Health.GetPrediction(targetR, 1000) > targetR.CountAlliesInRange(1000) * 120)
                     {
                         if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                         {
@@ -99,8 +99,8 @@ namespace KA_Lux.Modes
                                         Prediction.Health.GetPrediction(m, R.CastDelay) <=
                                         SpellDamage.GetRealDamage(SpellSlot.R, m) &&
                                         m.IsValidTarget(R.Range) &&
-                                        m.BaseSkinName == "SRU_Blue" && m.IsInRange(targetR, 1500) && 
-                                        Prediction.Health.GetPrediction(m, R.CastDelay) > 10);
+                                        m.BaseSkinName == "SRU_Blue" && m.IsInRange(targetR, 1500) &&
+                                        Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
                         if (blue != null)
                         {
                             R.Cast(blue);
@@ -117,7 +117,7 @@ namespace KA_Lux.Modes
                                         SpellDamage.GetRealDamage(SpellSlot.R, m) &&
                                         m.IsValidTarget(R.Range) &&
                                         m.BaseSkinName == "SRU_Red" && m.IsInRange(targetR, 1500) &&
-                                        Prediction.Health.GetPrediction(m, R.CastDelay) > 10);
+                                        Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
                         if (red != null)
                         {
                             R.Cast(red);
@@ -134,7 +134,7 @@ namespace KA_Lux.Modes
                                         SpellDamage.GetRealDamage(SpellSlot.R, m) &&
                                         m.IsValidTarget(R.Range) &&
                                         m.BaseSkinName == "SRU_Dragon" && m.IsInRange(targetR, 1500) &&
-                                        Prediction.Health.GetPrediction(m, R.CastDelay) > 10);
+                                        Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
 
                         if (drag != null)
                         {
@@ -152,7 +152,7 @@ namespace KA_Lux.Modes
                                         SpellDamage.GetRealDamage(SpellSlot.R, m) &&
                                         m.IsValidTarget(R.Range) &&
                                         m.BaseSkinName == "SRU_Baron" && m.IsInRange(targetR, 1500) &&
-                                        Prediction.Health.GetPrediction(m, R.CastDelay) > 10);
+                                        Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
 
                         if (baron != null)
                         {
