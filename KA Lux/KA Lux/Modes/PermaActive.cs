@@ -61,6 +61,12 @@ namespace KA_Lux.Modes
                 {
                     W.Cast(Player.Instance);
                 }
+
+                var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(45));
+                if (ally != null)
+                {
+                    W.Cast(ally.Position);
+                }
             }
             
             if (Q.IsReady() && Settings.KillStealQ && Player.Instance.ManaPercent >= Settings.KillStealMana)

@@ -283,6 +283,7 @@ namespace KA_Lux
                 private static readonly Slider _ksMana;
                 //W Settings
                 private static readonly CheckBox _wDefense;
+                private static readonly CheckBox _wDefenseAlly;
                 private static readonly Slider _wMana;
                 //JungleSteal Settings
                 private static readonly CheckBox _jugSteal;
@@ -375,6 +376,7 @@ namespace KA_Lux
                     _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 15));
                     MiscMenu.AddGroupLabel("W Settings");
                     _wDefense = MiscMenu.Add("safetyW", new CheckBox("Use W when the player is receiving a spell ?"));
+                    _wDefenseAlly = MiscMenu.Add("safetyWAlly", new CheckBox("Use W when an ally is receiving a spell ?"));
                     _wMana = MiscMenu.Add("wMana", new Slider("Min mana to use W ?", 10));
                     MiscMenu.AddGroupLabel("JungleStea; Settings");
                     _jugSteal = MiscMenu.Add("jungleSteal", new CheckBox("JungleSteal using R ?"));
