@@ -336,6 +336,7 @@ namespace KA_Ezreal
                     _tearAutoStack = MiscMenu.Add("tearstackbox", new CheckBox("Use spells to auto stack tear ?"));
                     _minManaToAutoStack = MiscMenu.Add("manaAutoStack",
                         new Slider("It will only autostack if mana is greater than ({0}).", 90, 1));
+
                     MiscMenu.AddGroupLabel("R Settings");
                     _minKsR = MiscMenu.Add("ksminR", new Slider("It will only cast R if the enemie is not in ({0}).", 600, 300, 2000));
                     _maxKsR = MiscMenu.Add("ksmaxR", new Slider("It will only cast R if the enemie is in ({0}).", 1500, 300, 30000));
@@ -346,6 +347,13 @@ namespace KA_Ezreal
                             "Overkill R, it will cast the ultimate only if the target`s health is greater than ({0}).",
                             150, 0, 650));
 
+                    MiscMenu.AddGroupLabel("Jungle Steal");
+                    _jugSteal = MiscMenu.Add("jungleSteal", new CheckBox("JungleSteal using R ?"));
+                    MiscMenu.AddSeparator(1);
+                    _jugStealBlue = MiscMenu.Add("junglestealBlue", new CheckBox("JungleSteal Blue ?"));
+                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("JungleSteal Red ?"));
+                    _jugStealDragon = MiscMenu.Add("junglestealDrag", new CheckBox("JungleSteal Dragon ?"));
+                    _jugStealBaron = MiscMenu.Add("junglestealBaron", new CheckBox("JungleSteal Baron ?"));
                 }
 
                 public static void Initialize()

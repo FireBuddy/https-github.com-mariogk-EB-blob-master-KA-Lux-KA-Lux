@@ -13,6 +13,7 @@ namespace KA_Ezreal
     {
         private const int BarWidth = 106;
         private const float LineThickness = 9.8f;
+        private const float YOffSet = 14;
 
         public delegate float DamageToUnitDelegate(AIHeroClient hero);
 
@@ -70,8 +71,8 @@ namespace KA_Ezreal
                                                (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
                         var currentHealthPercentage = unit.TotalShieldHealth() / (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
 
-                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + damagePercentage * BarWidth), (int)unit.HPBarPosition.Y - 5);
-                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + currentHealthPercentage * BarWidth) + 1, (int)unit.HPBarPosition.Y - 5);
+                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + damagePercentage * BarWidth), (int)unit.HPBarPosition.Y - 5 + YOffSet);
+                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + currentHealthPercentage * BarWidth) + 1, (int)unit.HPBarPosition.Y - 5 + YOffSet);
 
                         var colorH = System.Drawing.Color.FromArgb(Settings.HealthColor.A - 120, Settings.HealthColor.R,
                             Settings.HealthColor.G, Settings.HealthColor.B);

@@ -397,6 +397,7 @@ namespace KA_Lux
                 private static readonly CheckBox _drawReady;
                 private static readonly CheckBox _drawHealth;
                 private static readonly CheckBox _drawPercent;
+                private static readonly CheckBox _drawStatiscs;
                 private static readonly CheckBox _drawQ;
                 private static readonly CheckBox _drawW;
                 private static readonly CheckBox _drawE;
@@ -422,6 +423,11 @@ namespace KA_Lux
                 public static bool DrawPercent
                 {
                     get { return _drawPercent.CurrentValue; }
+                }
+
+                public static bool DrawStatistics
+                {
+                    get { return _drawStatiscs.CurrentValue; }
                 }
 
                 public static bool DrawQ
@@ -474,6 +480,7 @@ namespace KA_Lux
                     _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
                     _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
                     _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
+                    _drawStatiscs = DrawMenu.Add("statiscsIndicatorDraw", new CheckBox("Draw damage statistics ?"));
                     DrawMenu.AddSeparator(1);
                     _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
                     _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
@@ -494,20 +501,6 @@ namespace KA_Lux
 
             public static class Settings
             {
-                //Offensive
-                private static readonly CheckBox _AAcancel;
-                private static readonly Slider _DelayOff;
-
-                public static bool AACancel
-                {
-                    get { return _AAcancel.CurrentValue; }
-                }
-
-                public static int DelayBetweenOff
-                {
-                    get { return _DelayOff.CurrentValue; }
-                }
-
                 //Danger
                 private static readonly Slider EnemyRange;
                 private static readonly Slider EnemySlider;

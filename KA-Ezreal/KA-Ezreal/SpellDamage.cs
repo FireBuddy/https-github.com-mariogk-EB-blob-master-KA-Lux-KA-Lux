@@ -60,6 +60,7 @@ namespace KA_Ezreal
             {
                 case SpellSlot.Q:
 
+                    var sheen = 
                     damage = new float[] { 35, 55, 75, 95, 115 }[spellLevel] + 0.40f * Player.Instance.FlatMagicDamageMod + 1.1f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
