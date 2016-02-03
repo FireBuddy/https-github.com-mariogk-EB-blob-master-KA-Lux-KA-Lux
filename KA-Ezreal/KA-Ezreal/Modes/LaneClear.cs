@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Champions.Ezreal;
-
 using Settings = KA_Ezreal.Config.Modes.LaneClear;
 
 namespace KA_Ezreal.Modes
@@ -21,7 +19,8 @@ namespace KA_Ezreal.Modes
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(
-                        m => m.IsValidTarget(Q.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
+                        m => m.IsValidTarget(Q.Range) && Prediction.Health.GetPrediction(m,Q.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.Q, m) &&
+                        Prediction.Health.GetPrediction(m, Q.CastDelay) > 10);
 
             if (laneMinion == null) return;
 

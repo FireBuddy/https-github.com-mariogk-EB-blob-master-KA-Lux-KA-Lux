@@ -1,9 +1,9 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK.Rendering;
-using KickassSeries.Champions.Ezreal;
 
 using Settings = KA_Ezreal.Config.Modes.Draw;
+using Misc = KA_Ezreal.Config.Modes.Misc;
 
 namespace KA_Ezreal
 {
@@ -11,8 +11,10 @@ namespace KA_Ezreal
     {
         public static void Initialize()
         {
-            Config.Initialize();
+            if(Player.Instance.ChampionName != "Ezreal")return;
             SpellManager.Initialize();
+
+            Config.Initialize();
             ModeManager.Initialize();
             DamageIndicator.Initialize(SpellDamage.GetTotalDamage);
             EventsManager.Initialize();
@@ -39,7 +41,12 @@ namespace KA_Ezreal
 
             if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
             {
-                Circle.Draw(Settings.RColor, SpellManager.R.Range, 1f, Player.Instance);
+                Circle.Draw(Settings.minRColor, Misc.minR, 1f, Player.Instance);
+            }
+
+            if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
+            {
+                Circle.Draw(Settings.MaxRColor, Misc.maxR, 1f, Player.Instance);
             }
         }
     }

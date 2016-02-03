@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Enumerations;
 using KA_Lux.DMGHandler;
 
 using Settings = KA_Lux.Config.Modes.Misc;
@@ -17,8 +18,6 @@ namespace KA_Lux.Modes
 
         public override void Execute()
         {
-            Q.AllowedCollisionCount = 1;
-
             if (CastedE)
             {
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 || Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1)
@@ -46,7 +45,11 @@ namespace KA_Lux.Modes
                         }
                         else
                         {
-                            R.Cast(R.GetPrediction(targetR).CastPosition);
+                            var pred = R.GetPrediction(targetR);
+                            if (pred.HitChance >= HitChance.High)
+                            {
+                                R.Cast(pred.CastPosition);
+                            }
                         }
                     }
                 }
@@ -105,7 +108,11 @@ namespace KA_Lux.Modes
                                         Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
                         if (blue != null)
                         {
-                            R.Cast(blue);
+                            var pred = R.GetPrediction(blue);
+                            if (pred.HitChance >= HitChance.High)
+                            {
+                                R.Cast(pred.CastPosition);
+                            }
                         }
                     }
 
@@ -122,7 +129,11 @@ namespace KA_Lux.Modes
                                         Prediction.Health.GetPrediction(m, 1000) > m.CountEnemiesInRange(1000) * 70);
                         if (red != null)
                         {
-                            R.Cast(red);
+                            var pred = R.GetPrediction(red);
+                            if (pred.HitChance >= HitChance.High)
+                            {
+                                R.Cast(pred.CastPosition);
+                            }
                         }
                     }
 
@@ -140,7 +151,11 @@ namespace KA_Lux.Modes
 
                         if (drag != null)
                         {
-                            R.Cast(drag);
+                            var pred = R.GetPrediction(drag);
+                            if (pred.HitChance >= HitChance.High)
+                            {
+                                R.Cast(pred.CastPosition);
+                            }
                         }
                     }
 
@@ -158,7 +173,11 @@ namespace KA_Lux.Modes
 
                         if (baron != null)
                         {
-                            R.Cast(baron);
+                            var pred = R.GetPrediction(baron);
+                            if (pred.HitChance >= HitChance.High)
+                            {
+                                R.Cast(pred.CastPosition);
+                            }
                         }
                     }
                 }

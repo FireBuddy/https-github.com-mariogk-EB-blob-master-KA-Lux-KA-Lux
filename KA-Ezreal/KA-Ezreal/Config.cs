@@ -150,6 +150,7 @@ namespace KA_Ezreal
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                     SpellsMenu.AddGroupLabel("AutoHarass Spells:");
+                    //Add Key bind
                     _autouseQ = SpellsMenu.Add("autoHarassQ", new CheckBox("Use Q on AutoHarass ?"));
                     _autouseW = SpellsMenu.Add("autoHarassW", new CheckBox("Use W on AutoHarass ?"));
                     SpellsMenu.AddGroupLabel("AutoHarass Settings:");
@@ -195,9 +196,9 @@ namespace KA_Ezreal
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
                     _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
                     FarmMenu.AddGroupLabel("JungleClear Spells:");
-                    _useQ = FarmMenu.Add("jungleclearQ", new CheckBox("Use Q on JungleClear ?"));
+                    _useQJungle = FarmMenu.Add("jungleclearQ", new CheckBox("Use Q on JungleClear ?"));
                     FarmMenu.AddGroupLabel("JungleClear Settings:");
-                    _laneMana = FarmMenu.Add("jungleMana", new Slider("It will only cast any jungleclear spell if the mana is greater than ({0}).", 30));
+                    _jungleMana = FarmMenu.Add("jungleMana", new Slider("It will only cast any jungleclear spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -243,15 +244,20 @@ namespace KA_Ezreal
                 private static readonly Slider _minKsR;
                 private static readonly Slider _maxKsR;
                 private static readonly Slider _minHealthKsR;
+                //Auto Tear Stack
+                private static readonly CheckBox _tearAutoStack;
+                private static readonly Slider _minManaToAutoStack;
+                //JungleSteal
+                //JungleSteal Settings
+                private static readonly CheckBox _jugSteal;
+                private static readonly CheckBox _jugStealBlue;
+                private static readonly CheckBox _jugStealRed;
+                private static readonly CheckBox _jugStealDragon;
+                private static readonly CheckBox _jugStealBaron;
 
                 public static bool UseE
                 {
                     get { return _fleeE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _stunR.CurrentValue; }
                 }
 
                 public static bool GapE
@@ -262,6 +268,11 @@ namespace KA_Ezreal
                 public static bool KSR
                 {
                     get { return _ksR.CurrentValue; }
+                }
+
+                public static bool CCedR
+                {
+                    get { return _stunR.CurrentValue; }
                 }
 
                 public static int minR
@@ -278,19 +289,62 @@ namespace KA_Ezreal
                 {
                     get { return _minHealthKsR.CurrentValue; }
                 }
+                //Auto Tear Stack
+                public static bool AutoTearStack
+                {
+                    get { return _tearAutoStack.CurrentValue; }
+                }
+
+                public static int MinManaToAutoStack
+                {
+                    get { return _minManaToAutoStack.CurrentValue; }
+                }
+                //JungleSteal
+                public static bool JungleSteal
+                {
+                    get { return _jugSteal.CurrentValue; }
+                }
+
+                public static bool JungleStealBlue
+                {
+                    get { return _jugStealBlue.CurrentValue; }
+                }
+
+                public static bool JungleStealRed
+                {
+                    get { return _jugStealRed.CurrentValue; }
+                }
+
+                public static bool JungleStealDrag
+                {
+                    get { return _jugStealDragon.CurrentValue; }
+                }
+
+                public static bool JungleStealBaron
+                {
+                    get { return _jugStealBaron.CurrentValue; }
+                }
 
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellenous");
-                    _fleeE = MiscMenu.Add("fleeE", new CheckBox("Use E to Flee ?"));
-                    _stunR = MiscMenu.Add("stunUlt", new CheckBox("Use R when target is CC`ed ?"));
-                    _gapE = MiscMenu.Add("gapE", new CheckBox("Use E on Gapcloser ?"));
-                    MiscMenu.AddGroupLabel("KS");
-                    _ksR = MiscMenu.Add("ksR", new CheckBox("Use R to KS"));
-                    _minKsR = MiscMenu.Add("ksminR", new Slider("Min Range to KS with R", 600, 300, 2000));
-                    _maxKsR = MiscMenu.Add("ksmaxR", new Slider("Max Range to KS with R", 1500, 300, 30000));
-                    _minHealthKsR = MiscMenu.Add("kshealthR", new Slider("Min Health to KS with R", 200, 0, 650));
+                    _fleeE = MiscMenu.Add("fleeE", new CheckBox("Use E when you press the orbwalker key to flee ?"));
+                    _stunR = MiscMenu.Add("stunUlt", new CheckBox("Use R when target has some kind of CC (Ex: Stun)?"));
+                    _gapE = MiscMenu.Add("gapE", new CheckBox("Use E to safety when an enemy use a gapcloser spell on you ?"));
+                    MiscMenu.AddLabel("Auto Tear Stack Settings");
+                    _tearAutoStack = MiscMenu.Add("tearstackbox", new CheckBox("Use spells to auto stack tear ?"));
+                    _minManaToAutoStack = MiscMenu.Add("manaAutoStack",
+                        new Slider("It will only autostack if mana is greater than ({0}).", 90, 1));
+                    MiscMenu.AddGroupLabel("R Settings");
+                    _minKsR = MiscMenu.Add("ksminR", new Slider("It will only cast R if the enemie is not in ({0}).", 600, 300, 2000));
+                    _maxKsR = MiscMenu.Add("ksmaxR", new Slider("It will only cast R if the enemie is in ({0}).", 1500, 300, 30000));
+                    MiscMenu.AddLabel("KS Settings");
+                    _ksR = MiscMenu.Add("ksR", new CheckBox("Use R to KillSteal ?"));
+                    _minHealthKsR = MiscMenu.Add("kshealthR",
+                        new Slider(
+                            "Overkill R, it will cast the ultimate only if the target`s health is greater than ({0}).",
+                            150, 0, 650));
 
                 }
 
@@ -304,6 +358,7 @@ namespace KA_Ezreal
                 private static readonly CheckBox _drawReady;
                 private static readonly CheckBox _drawHealth;
                 private static readonly CheckBox _drawPercent;
+                private static readonly CheckBox _drawStatiscs;
                 private static readonly CheckBox _drawQ;
                 private static readonly CheckBox _drawW;
                 private static readonly CheckBox _drawE;
@@ -312,7 +367,8 @@ namespace KA_Ezreal
                 private static readonly ColorConfig _qColor;
                 private static readonly ColorConfig _wColor;
                 private static readonly ColorConfig _eColor;
-                private static readonly ColorConfig _rColor;
+                private static readonly ColorConfig _minrColor;
+                private static readonly ColorConfig _maxrColor;
                 private static readonly ColorConfig _healthColor;
 
                 //CheckBoxes
@@ -329,6 +385,11 @@ namespace KA_Ezreal
                 public static bool DrawPercent
                 {
                     get { return _drawPercent.CurrentValue; }
+                }
+
+                public static bool DrawStatistics
+                {
+                    get { return _drawStatiscs.CurrentValue; }
                 }
 
                 public static bool DrawQ
@@ -370,9 +431,13 @@ namespace KA_Ezreal
                 {
                     get { return _eColor.GetSharpColor(); }
                 }
-                public static SharpDX.Color RColor
+                public static SharpDX.Color minRColor
                 {
-                    get { return _rColor.GetSharpColor(); }
+                    get { return _minrColor.GetSharpColor(); }
+                }
+                public static SharpDX.Color MaxRColor
+                {
+                    get { return _maxrColor.GetSharpColor(); }
                 }
 
                 static Draw()
@@ -381,6 +446,7 @@ namespace KA_Ezreal
                     _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
                     _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
                     _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
+                    _drawStatiscs = DrawMenu.Add("statiscsIndicatorDraw", new CheckBox("Draw damage statistics ?"));
                     DrawMenu.AddSeparator(1);
                     _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
                     _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
@@ -391,7 +457,8 @@ namespace KA_Ezreal
                     _qColor = new ColorConfig(DrawMenu, "qColorConfig", Color.Blue, "Color Q:");
                     _wColor = new ColorConfig(DrawMenu, "wColorConfig", Color.Red, "Color W:");
                     _eColor = new ColorConfig(DrawMenu, "eColorConfig", Color.DeepPink, "Color E:");
-                    _rColor = new ColorConfig(DrawMenu, "rColorConfig", Color.Yellow, "Color R:");
+                    _minrColor = new ColorConfig(DrawMenu, "rminColorConfig", Color.Yellow, "Color Minimun range R:");
+                    _maxrColor = new ColorConfig(DrawMenu, "rmaxColorConfig", Color.Purple, "Color Maximun range R:");
                 }
 
                 public static void Initialize()

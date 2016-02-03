@@ -1,6 +1,6 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-
+using EloBuddy.SDK.Enumerations;
 using Settings = KA_Lux.Config.Modes.Combo;
 
 namespace KA_Lux.Modes
@@ -19,7 +19,11 @@ namespace KA_Lux.Modes
 
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(Q.GetPrediction(target).CastPosition);
+                var pred = Q.GetPrediction(target);
+                if (pred.HitChance >= HitChance.High)
+                {
+                    Q.Cast(pred.CastPosition);
+                }
             }
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Settings.UseESnared
@@ -45,7 +49,11 @@ namespace KA_Lux.Modes
                     }
                     else
                     {
-                        R.Cast(R.GetPrediction(targetR).CastPosition);
+                        var pred = R.GetPrediction(target);
+                        if (pred.HitChance >= HitChance.High)
+                        {
+                            R.Cast(pred.CastPosition);
+                        }
                     }
                 }
             }

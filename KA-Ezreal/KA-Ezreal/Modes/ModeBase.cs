@@ -1,5 +1,4 @@
 ﻿using EloBuddy.SDK;
-using KickassSeries.Champions.Ezreal;
 
 namespace KA_Ezreal.Modes
 {

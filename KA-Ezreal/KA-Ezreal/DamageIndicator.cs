@@ -9,8 +9,8 @@ using Settings = KA_Ezreal.Config.Modes.Draw;
 
 namespace KA_Ezreal
 {
-   public static class DamageIndicator
-    { 
+    public static class DamageIndicator
+    {
         private const int BarWidth = 106;
         private const float LineThickness = 9.8f;
 
@@ -18,7 +18,7 @@ namespace KA_Ezreal
 
         private static DamageToUnitDelegate DamageToUnit { get; set; }
 
-        private static Font _Font;
+        private static Font _Font, _Font2;
 
         public static void Initialize(DamageToUnitDelegate damageToUnit)
         {
@@ -31,8 +31,23 @@ namespace KA_Ezreal
                 {
                     FaceName = "Segoi UI",
                     Height = 18,
+                    Weight = FontWeight.Bold,
                     OutputPrecision = FontPrecision.Default,
-                    Quality = FontQuality.Default
+                    Quality = FontQuality.ClearType,
+
+
+                });
+
+            _Font2 = new Font(
+                Drawing.Direct3DDevice,
+                new FontDescription
+                {
+                    FaceName = "Segoi UI",
+                    Height = 12,
+                    Weight = FontWeight.Bold,
+                    OutputPrecision = FontPrecision.Default,
+                    Quality = FontQuality.ClearType,
+
                 });
         }
 
@@ -55,8 +70,8 @@ namespace KA_Ezreal
                                                (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
                         var currentHealthPercentage = unit.TotalShieldHealth() / (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
 
-                        var startPoint = new Vector2((int)(unit.HPBarPosition.X  + damagePercentage * BarWidth), (int)unit.HPBarPosition.Y - 5);
-                        var endPoint = new Vector2((int)(unit.HPBarPosition.X  + currentHealthPercentage * BarWidth) + 1, (int)unit.HPBarPosition.Y - 5);
+                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + damagePercentage * BarWidth), (int)unit.HPBarPosition.Y - 5);
+                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + currentHealthPercentage * BarWidth) + 1, (int)unit.HPBarPosition.Y - 5);
 
                         var colorH = System.Drawing.Color.FromArgb(Settings.HealthColor.A - 120, Settings.HealthColor.R,
                             Settings.HealthColor.G, Settings.HealthColor.B);
@@ -68,6 +83,10 @@ namespace KA_Ezreal
                     {
                         var color = new Color(Settings.HealthColor.R, Settings.HealthColor.G, Settings.HealthColor.B, Settings.HealthColor.A - 5);
                         _Font.DrawText(null, string.Concat(Math.Ceiling(damage / unit.TotalShieldHealth() * 100), "%"), (int)unit.HPBarPosition[0] + 102, (int)unit.HPBarPosition[1] + 29, color);
+                        if (Settings.DrawStatistics)
+                        {
+                            _Font2.DrawText(null, "-" + Math.Round(SpellDamage.GetTotalDamage(unit)) + " / " + Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] + 82, (int)unit.HPBarPosition[1] - 9, color);
+                        }
                     }
                 }
             }

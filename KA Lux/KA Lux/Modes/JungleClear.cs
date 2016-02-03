@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using EloBuddy.SDK;
-
+using EloBuddy.SDK.Enumerations;
 using Settings = KA_Lux.Config.Modes.JungleClear;
 
 namespace KA_Lux.Modes
@@ -29,7 +29,11 @@ namespace KA_Lux.Modes
 
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(jgminion);
+                var pred = Q.GetPrediction(jgminion);
+                if (pred.HitChance >= HitChance.High)
+                {
+                    Q.Cast(pred.CastPosition);
+                }
             }
         }
     }

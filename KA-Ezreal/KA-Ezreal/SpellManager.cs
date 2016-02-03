@@ -2,7 +2,7 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 
-namespace KickassSeries.Champions.Ezreal
+namespace KA_Ezreal
 {
     public static class SpellManager
     {
@@ -13,18 +13,17 @@ namespace KickassSeries.Champions.Ezreal
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 1160, SkillShotType.Linear, 350, 2000, 65)
-            {
-                MinimumHitChance = HitChance.High
-            };
+            Q = new Spell.Skillshot(SpellSlot.Q, 1100, SkillShotType.Linear, 350, 2000, 65);
             W = new Spell.Skillshot(SpellSlot.W, 970, SkillShotType.Linear, 350, 1550, 80)
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            E = new Spell.Skillshot(SpellSlot.E, 470, SkillShotType.Circular, 450, 450, 10);
-            R = new Spell.Skillshot(SpellSlot.R, 2000, SkillShotType.Linear, 1, 2000, 160)
+            E = new Spell.Skillshot(SpellSlot.E, 470, SkillShotType.Circular, 450, 450, 10)
             {
-                MinimumHitChance = HitChance.High,
+                AllowedCollisionCount = int.MaxValue
+            };
+            R = new Spell.Skillshot(SpellSlot.R, 2000, SkillShotType.Linear, 1000, 2000, 150)
+            {
                 AllowedCollisionCount = int.MaxValue
             };
         }

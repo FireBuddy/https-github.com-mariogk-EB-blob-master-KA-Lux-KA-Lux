@@ -1,7 +1,9 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Events;
-using KickassSeries.Champions.Ezreal;
+
+using Settings = KA_Ezreal.Config.Modes.Misc;
+using LastConfig = KA_Ezreal.Config.Modes.LastHit;
 
 namespace KA_Ezreal
 {
@@ -18,12 +20,16 @@ namespace KA_Ezreal
         }
 
         private static void Orbwalker_OnUnkillableMinion(Obj_AI_Base target, Orbwalker.UnkillableMinionArgs args)
-        {/*
+        {
             var minion = target as Obj_AI_Minion;
-            if (minion != null && minion.IsValidTarget(SpellManager.Q.Range) && Settings.UseQun && Player.Instance.ManaPercent >= Settings.ManaLast)
+            if (minion != null && minion.IsValidTarget(SpellManager.Q.Range) && LastConfig.UseQ &&
+                Player.Instance.ManaPercent >= LastConfig.LastMana &&
+                Prediction.Health.GetPrediction(minion, SpellManager.Q.CastDelay) > 10 &&
+                Prediction.Health.GetPrediction(minion, SpellManager.Q.CastDelay) <
+                SpellDamage.GetRealDamage(SpellSlot.Q, minion))
             {
                 SpellManager.Q.Cast(minion);
-            }*/
+            }
         }
 
         private static void Orbwalker_OnPostAttack(AttackableUnit target, System.EventArgs args)
@@ -36,13 +42,13 @@ namespace KA_Ezreal
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
-        {/*
-            if (!Misc.GapE && !SpellManager.E.IsReady() && sender.IsAlly) return;
+        {
+            if (!Settings.GapE && !SpellManager.E.IsReady() && sender.IsAlly) return;
 
-            if (sender.IsEnemy && sender.IsVisible && Player.Instance.Distance(e.End) < 150)
+            if (sender.IsEnemy && sender.IsVisible && sender.IsInRange(Player.Instance, SpellManager.E.Range))
             {
                 SpellManager.E.Cast(Player.Instance.Position.Shorten(sender.Position, SpellManager.E.Range));
-            }*/
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using EloBuddy;
+﻿using EloBuddy;
 using EloBuddy.SDK;
-
+using EloBuddy.SDK.Enumerations;
 using Settings = KA_Ezreal.Config.Modes.Combo;
 
 namespace KA_Ezreal.Modes
@@ -22,37 +21,53 @@ namespace KA_Ezreal.Modes
             if (Settings.UseQ && Q.IsReady() && target.IsValidTarget(Q.Range) &&
                 !target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
-                Q.Cast(Q.GetPrediction(target).CastPosition);
+                var pred = Q.GetPrediction(target);
+                if (pred.HitChance >= HitChance.High)
+                {
+                    Q.Cast(pred.CastPosition);
+                }
             }
 
             //W To AA Cancel
             if (Settings.UseW && W.IsReady() && target.IsValidTarget(W.Range) &&
                 !target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
-                W.Cast(W.GetPrediction(target).CastPosition);
+                var pred = W.GetPrediction(target);
+                if (pred.HitChance >= HitChance.Medium)
+                {
+                    W.Cast(pred.CastPosition);
+                }
             }
 
             //Normal Q and W
             if (Settings.UseQ && EventsManager.CanQCancel && target.IsValidTarget(Q.Range) &&
                 target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
-                Q.Cast(Q.GetPrediction(target).CastPosition);
+                var pred = Q.GetPrediction(target);
+                if (pred.HitChance >= HitChance.High)
+                {
+                    Q.Cast(pred.CastPosition);
+                }
             }
 
             if (Settings.UseW && EventsManager.CanWCancel && target.IsValidTarget(W.Range) &&
                 target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
-                W.Cast(W.GetPrediction(target).CastPosition);
+                var pred = W.GetPrediction(target);
+                if (pred.HitChance >= HitChance.Medium)
+                {
+                    W.Cast(pred.CastPosition);
+                }
             }
-
+            //Test R
             if (Settings.UseR && R.IsReady() && target.IsValidTarget(R.Range))
             {
-                var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget(Settings.MinR)).ToArray();
-                if(enemies.Length == 0)return;
-
-                Prediction.Position.PredictLinearMissile(target, R.ra)
+                var predpos = R.GetPrediction(target).CastPosition;
+                if (predpos.CountEnemiesInRange(R.Width) > Settings.MinR)
+                {
+                    R.Cast(predpos);
+                }
             }
-
         }
     }
 }

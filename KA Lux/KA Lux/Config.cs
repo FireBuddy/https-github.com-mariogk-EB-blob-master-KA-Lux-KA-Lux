@@ -340,18 +340,22 @@ namespace KA_Lux
                 {
                     get { return _jugSteal.CurrentValue; }
                 }
+
                 public static bool JungleStealBlue
                 {
                     get { return _jugStealBlue.CurrentValue; }
                 }
+
                 public static bool JungleStealRed
                 {
                     get { return _jugStealRed.CurrentValue; }
                 }
+
                 public static bool JungleStealDrag
                 {
                     get { return _jugStealDragon.CurrentValue; }
                 }
+
                 public static bool JungleStealBaron
                 {
                     get { return _jugStealBaron.CurrentValue; }

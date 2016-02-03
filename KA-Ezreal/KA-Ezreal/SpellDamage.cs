@@ -1,7 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
-namespace KickassSeries.Champions.Ezreal
+namespace KA_Ezreal
 {
     public static class SpellDamage
     {

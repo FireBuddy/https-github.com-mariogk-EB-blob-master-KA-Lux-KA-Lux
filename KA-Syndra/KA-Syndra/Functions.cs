@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Events;
 using SharpDX;
 
 namespace KA_Syndra
@@ -13,7 +11,7 @@ namespace KA_Syndra
         public static Vector3 GrabWPost(bool onlyQ)
         {
             var sphere =
-                ObjectManager.Get<Obj_AI_Base>().FirstOrDefault(a => a.Name == "Seed" && a.IsValid);
+                ObjectManager.Get<Obj_AI_Base>().FirstOrDefault(a => a.Name == "Seed" && a.IsValid && !a.IsMoving && !a.IsDashing());
             if (sphere != null)
             {
                 return sphere.Position;
