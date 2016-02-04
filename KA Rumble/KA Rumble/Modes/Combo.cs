@@ -16,39 +16,41 @@ namespace KA_Rumble.Modes
         {
             
             var target = TargetSelector.GetTarget(E.Range, DamageType.Magical);
-            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
-
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE &&
+            if (target != null && !target.IsZombie && !target.HasUndyingBuff())
+            {
+                if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE &&
                 (Functions.ShouldOverload(SpellSlot.E) || Player.Instance.Mana < 80))
-            {
-                var pred = E.GetPrediction(target);
-                if (pred.HitChance >= HitChance.Medium)
                 {
-                    E.Cast(E.GetPrediction(target).CastPosition);
+                    var pred = E.GetPrediction(target);
+                    if (pred.HitChance >= HitChance.Medium)
+                    {
+                        E.Cast(E.GetPrediction(target).CastPosition);
+                    }
+                }
+
+                if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1)
+                {
+                    var pred = E.GetPrediction(target);
+                    if (pred.HitChance >= HitChance.Medium)
+                    {
+                        E.Cast(E.GetPrediction(target).CastPosition);
+                    }
+                }
+
+                if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(target) &&
+                    (Functions.ShouldOverload(SpellSlot.Q) || Player.Instance.Mana < 80))
+                {
+                    Q.Cast();
                 }
             }
-
-            if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1)
-            {
-                var pred = E.GetPrediction(target);
-                if (pred.HitChance >= HitChance.Medium)
-                {
-                    E.Cast(E.GetPrediction(target).CastPosition);
-                }
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(target) &&
-                (Functions.ShouldOverload(SpellSlot.Q) || Player.Instance.Mana < 80))
-            {
-                Q.Cast();
-            }
+            
             
             var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
             if (targetR == null || targetR.IsZombie || targetR.HasUndyingBuff()) return;
 
             if (R.IsReady() && targetR.IsValidTarget(R.Range) && Settings.UseR &&
-                //!targetR.IsInRange(Player.Instance, E.Range) && !targetR.IsFacing(Player.Instance) && 
-                Prediction.Health.GetPrediction(targetR, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR))
+                !targetR.IsInRange(Player.Instance, E.Range) && !targetR.IsFacing(Player.Instance) /*&& 
+                /*Prediction.Health.GetPrediction(targetR, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)*/)
             {
                 Functions.CastR(targetR);
             }

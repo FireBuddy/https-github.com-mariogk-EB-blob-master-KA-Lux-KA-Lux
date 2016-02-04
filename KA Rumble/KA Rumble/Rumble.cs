@@ -1,5 +1,6 @@
 ﻿using System;
 using EloBuddy;
+using EloBuddy.SDK;
 using EloBuddy.SDK.Rendering;
 
 using Settings = KA_Rumble.Config.Modes.Draw;
