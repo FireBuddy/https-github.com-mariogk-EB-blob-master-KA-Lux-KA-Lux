@@ -49,10 +49,18 @@ namespace KA_Rumble.Modes
             if (targetR == null || targetR.IsZombie || targetR.HasUndyingBuff()) return;
 
             if (R.IsReady() && targetR.IsValidTarget(R.Range) && Settings.UseR &&
-                !targetR.IsInRange(Player.Instance, E.Range) && !targetR.IsFacing(Player.Instance) /*&& 
-                /*Prediction.Health.GetPrediction(targetR, R.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)*/)
+                !targetR.IsInRange(Player.Instance, E.Range) && !targetR.IsFacing(Player.Instance))
             {
-                Functions.CastR(targetR);
+                if (Settings.UseRKillable &&
+                    Prediction.Health.GetPrediction(targetR, R.CastDelay) <=
+                    SpellDamage.GetRealDamage(SpellSlot.R, targetR))
+                {
+                    Functions.CastR(targetR, Settings.MinR);
+                }
+                else
+                {
+                    Functions.CastR(targetR, Settings.MinR);
+                }
             }
         }
     }

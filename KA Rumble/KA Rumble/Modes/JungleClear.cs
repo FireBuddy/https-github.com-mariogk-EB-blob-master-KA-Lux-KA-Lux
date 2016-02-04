@@ -20,14 +20,24 @@ namespace KA_Rumble.Modes
                     .OrderByDescending(j => j.Health)
                     .FirstOrDefault(j => j.IsValidTarget(E.Range));
 
-            if (jgminion == null)return;
+            if (jgminion == null) return;
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.Mana <= 60)
+            var minionE =
+                EntityManager.MinionsAndMonsters.GetLaneMinions()
+                    .OrderByDescending(m => m.Health)
+                    .FirstOrDefault(
+                        m =>
+                            m.IsValidTarget(E.Range) &&
+                            Prediction.Health.GetPrediction(m, E.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.E, m) &&
+                            Prediction.Health.GetPrediction(m, E.CastDelay) > 10);
+
+            if (minionE != null)
             {
-                E.Cast(jgminion);
+                E.Cast(minionE);
             }
 
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(jgminion) && Player.Instance.Mana <= 60)
+            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(jgminion) &&
+                Player.Instance.Mana <= 60)
             {
                 Q.Cast();
             }

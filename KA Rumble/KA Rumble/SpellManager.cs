@@ -16,7 +16,7 @@ namespace KA_Rumble
             Q = new Spell.Active(SpellSlot.Q, 600);
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Skillshot(SpellSlot.E, 840, SkillShotType.Linear, 250, 2000, 70);
-            R = new Spell.Skillshot(SpellSlot.R, 2700, SkillShotType.Linear, 400, 2500, 120)
+            R = new Spell.Skillshot(SpellSlot.R, 1700, SkillShotType.Linear, 400, 2500, 120)
             {
                 AllowedCollisionCount = int.MaxValue
             };

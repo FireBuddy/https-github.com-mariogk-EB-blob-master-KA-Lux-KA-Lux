@@ -25,7 +25,7 @@ namespace KA_Rumble
             return false;
         }
 
-        public static void CastR(AIHeroClient target)
+        public static void CastR(AIHeroClient target, int minimunE)
         {
             
             if (target != null && target.CountEnemiesInRange(1000) == 1)
@@ -47,7 +47,7 @@ namespace KA_Rumble
 
                 var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget()).Select(enemy => enemy.Position.To2D()).ToList();
 
-                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 1000f, 2, initPos);
+                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 1000f, minimunE, initPos);
 
                 Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
             }

@@ -12,7 +12,6 @@ namespace KA_Rumble.Modes
 
         public override void Execute()
         {
-
             if (Player.Instance.InDanger(95) && W.IsReady() && (Functions.ShouldOverload(SpellSlot.W) || Player.Instance.Mana < 80))
             {
                 W.Cast();

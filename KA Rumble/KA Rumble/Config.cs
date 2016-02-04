@@ -62,28 +62,32 @@ namespace KA_Rumble
             public static class Combo
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
+
+                private static readonly Slider _minR;
+                private static readonly CheckBox _useRKillable;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
                 }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
-                }
-
                 public static bool UseE
                 {
                     get { return _useE.CurrentValue; }
                 }
-
                 public static bool UseR
                 {
                     get { return _useR.CurrentValue; }
+                }
+
+                public static int MinR
+                {
+                    get { return _minR.CurrentValue; }
+                }
+                public static bool UseRKillable
+                {
+                    get { return _useRKillable.CurrentValue; }
                 }
 
                 static Combo()
@@ -91,9 +95,11 @@ namespace KA_Rumble
                     // Initialize the menu values
                     SpellsMenu.AddGroupLabel("Combo Spells:");
                     _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
-                    _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
                     _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
+                    SpellsMenu.AddLabel("R Settings:");
+                    _minR = SpellsMenu.Add("minR", new Slider("Minimun enemies to use R ?",2,0,5));
+                    _useRKillable  = SpellsMenu.Add("comboRKill", new CheckBox("Only use R if it will kill at least one ?",false));
                 }
 
                 public static void Initialize()
@@ -104,19 +110,11 @@ namespace KA_Rumble
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _manaHarass;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -124,25 +122,11 @@ namespace KA_Rumble
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int ManaHarass
-                {
-                    get { return _manaHarass.CurrentValue; }
-                }
-
                 static Harass()
                 {
                     SpellsMenu.AddGroupLabel("Harass Spells:");
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
-                    _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
-                    SpellsMenu.AddGroupLabel("Harass Settings:");
-                    _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -153,20 +137,11 @@ namespace KA_Rumble
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _laneMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -174,31 +149,11 @@ namespace KA_Rumble
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int LaneMana
-                {
-                    get { return _laneMana.CurrentValue; }
-                }
-
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
                 static LaneClear()
                 {
                     FarmMenu.AddGroupLabel("LaneClear Spells:");
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
-                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
-                    FarmMenu.AddGroupLabel("LaneClear Settings:");
-                    _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -208,54 +163,17 @@ namespace KA_Rumble
 
             public static class LastHit
             {
-                private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
-
-                public static bool UseQ
-                {
-                    get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
-                }
 
                 public static bool UseE
                 {
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int LastMana
-                {
-                    get { return _lastMana.CurrentValue; }
-                }
-
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
-
                 static LastHit()
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
-                    _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
-                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
-                    FarmMenu.AddGroupLabel("LastHit Settings:");
-                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -265,32 +183,17 @@ namespace KA_Rumble
 
             public static class Misc
             {
-                private static readonly CheckBox _interruptSpell;
                 private static readonly CheckBox _antiGapCloserSpell;
-                private static readonly Slider _miscMana;
-
-                public static bool InterruptSpell
-                {
-                    get { return _interruptSpell.CurrentValue; }
-                }
 
                 public static bool AntiGapCloser
                 {
                     get { return _antiGapCloserSpell.CurrentValue; }
                 }
-
-                public static int MiscMana
-                {
-                    get { return _miscMana.CurrentValue; }
-                }
-
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
-                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserE", new CheckBox("Use E to antigapcloser spells ?"));
                 }
 
                 public static void Initialize()
@@ -442,7 +345,7 @@ namespace KA_Rumble
 
                 static Settings()
                 {
-                    SettingsMenu.AddGroupLabel("Danger Settings");
+                    SettingsMenu.AddGroupLabel("Danger W Settings");
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1000, 600, 2500));
                     Spells = SettingsMenu.Add("considerspells", new CheckBox("Consider spells ?"));

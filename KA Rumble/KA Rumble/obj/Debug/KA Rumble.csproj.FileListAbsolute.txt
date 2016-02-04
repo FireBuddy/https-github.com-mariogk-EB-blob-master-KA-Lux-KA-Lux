@@ -1,5 +1,4 @@
 C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.exe.config
-C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\obj\Debug\KA Rumble.csprojResolveAssemblyReference.cache
 C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.exe
 C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.pdb
 C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\EloBuddy.dll
