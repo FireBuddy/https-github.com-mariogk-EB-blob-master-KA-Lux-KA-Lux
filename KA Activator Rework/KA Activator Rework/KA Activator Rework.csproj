@@ -64,13 +64,27 @@
     <Compile Include="Config.cs" />
     <Compile Include="DamageHandler\DamageHandler.cs" />
     <Compile Include="DamageHandler\DangerousSpells.cs" />
+    <Compile Include="EventsManager.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Items\Consumables.cs" />
+    <Compile Include="Items\Defensive.cs" />
+    <Compile Include="Items\Extensions.cs" />
+    <Compile Include="Items\Ids.cs" />
+    <Compile Include="Items\Offensive.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SummonerSpells\Extensions.cs" />
+    <Compile Include="SummonerSpells\Initialize.cs" />
+    <Compile Include="SummonerSpells\Spells\Barrier.cs" />
+    <Compile Include="SummonerSpells\Spells\Exhaust.cs" />
+    <Compile Include="SummonerSpells\Spells\Ghost.cs" />
+    <Compile Include="SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="SummonerSpells\Spells\Smite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
