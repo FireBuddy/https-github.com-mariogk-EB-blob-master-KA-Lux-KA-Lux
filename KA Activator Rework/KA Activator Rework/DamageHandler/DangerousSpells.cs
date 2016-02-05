@@ -100,7 +100,7 @@ namespace KA_Activator_Rework.DamageHandler
             new DangerousSpell(Champion.Zed, SpellSlot.R, true, 2800),
             new DangerousSpell(Champion.Zyra, SpellSlot.R, true, 250),
             //Teste
-            new DangerousSpell(Champion.Ezreal, SpellSlot.Q, true, 0),
+            new DangerousSpell(Champion.Ezreal, SpellSlot.Q, true, 10),
         };
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using EloBuddy;
 
 namespace KA_Activator_Rework
@@ -8,16 +7,19 @@ namespace KA_Activator_Rework
     {
         public static void Initialize()
         {
+            Config.Initialize();
             DamageHandler.DamageHandler.Intialize();
             Game.OnTick += Game_OnTick;
         }
 
         private static void Game_OnTick(EventArgs args)
         {
-            Console.WriteLine(DamageHandler.DamageHandler.Missiles.Count);
-            var hu3 = DamageHandler.DamageHandler.Missiles.FirstOrDefault(m=> m.Target == Player.Instance);
-            if(hu3 == null)return;
-            Console.WriteLine(hu3);
+            //Console.WriteLine("Missiles = "+DamageHandler.DamageHandler.Missiles.Count);
+            //Console.WriteLine("Dang Spells = " + DamageHandler.DamageHandler.DangSpells.Count);
+            //Console.WriteLine("Dang Spells = " + DamageHandler.DamageHandler.ReceivingDangSpell);
+            //var hu3 = DamageHandler.DamageHandler.Missiles.FirstOrDefault(m=> m.Target == Player.Instance);
+            //if(hu3 == null)return;
+            //Console.WriteLine(hu3);
         }
     }
 }

@@ -1,0 +1,13 @@
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\KA Rumble.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\obj\Debug\KA_Rumble.Resource1.resources
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\obj\Debug\KA Rumble.csproj.GenerateResource.Cache
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\obj\Debug\KA Rumble.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Rumble\KA Rumble\obj\Debug\KA Rumble.pdb

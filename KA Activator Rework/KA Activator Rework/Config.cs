@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
@@ -11,17 +12,34 @@ namespace KA_Activator_Rework
     internal static class Config
     {
         private const string MenuName = "KA Activator";
-
         private static readonly Menu Menu;
 
         static Config()
         {
-            // Initialize the menu
-            Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("KA Activator");
-            Menu.AddLabel("Made By: MarioGK", 50);
-
-            // Initialize the modes
+            switch (Game.MapId)
+            {
+                case GameMapId.CrystalScar:
+                    Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower() + "CS");
+                    Menu.AddGroupLabel("KA Activator : CS");
+                    Menu.AddLabel("Made By: MarioGK", 50);
+                    break;
+                case GameMapId.TwistedTreeline:
+                    Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower() + "TT");
+                    Menu.AddGroupLabel("KA Activator : TT");
+                    Menu.AddLabel("Made By: MarioGK", 50);
+                    break;
+                case GameMapId.SummonersRift:
+                    Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower() + "SR");
+                    Menu.AddGroupLabel("KA Activator : SR");
+                    Menu.AddLabel("Made By: MarioGK", 50);
+                    break;
+                case GameMapId.HowlingAbyss:
+                    Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower() + "HA");
+                    Menu.AddGroupLabel("KA Activator : HA");
+                    Menu.AddLabel("Made By: MarioGK", 50);
+                    break;
+            }
+            
             Types.Initialize();
         }
 
@@ -207,6 +225,7 @@ namespace KA_Activator_Rework
                 #endregion Manamune
 
                 #region FrostQueen
+
                 private static readonly CheckBox _useFrostQueen;
                 private static readonly Slider _targetHPFrostQueen;
 
@@ -229,53 +248,41 @@ namespace KA_Activator_Rework
                     // Initialize the menu values
                     OffensiveMenu.AddGroupLabel("Bilgewater Cutlass");
                     UseBilgewater = OffensiveMenu.Add("useBilgewater", new CheckBox("Use Bilgewater Cutlass ?"));
-                    TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP",
-                        new Slider("Use Bilgewater Cutlass When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP", new Slider("Use Bilgewater Cutlass When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Blade Of The Ruined King");
                     UseBlade = OffensiveMenu.Add("useBlade", new CheckBox("Use Blade Of The Ruined King ?"));
-                    MyHpBlade = OffensiveMenu.Add("useBladeMyHP",
-                        new Slider("Use Blade Of The Ruined King When My Health hits X%", 80));
-                    TargetHpBlade = OffensiveMenu.Add("useBladeTargetHP",
-                        new Slider("Use Blade Of The Ruined King When Target`s Health is lower than ({0}%)", 80));
+                    MyHpBlade = OffensiveMenu.Add("useBladeMyHP", new Slider("Use Blade Of The Ruined King When My Health hits X%", 80));
+                    TargetHpBlade = OffensiveMenu.Add("useBladeTargetHP", new Slider("Use Blade Of The Ruined King When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Tiamat");
                     UseTiamat = OffensiveMenu.Add("useTiamat", new CheckBox("Use Tiamat ?"));
-                    TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP",
-                        new Slider("Use Tiamat When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP", new Slider("Use Tiamat When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Ravenous Hydra");
                     UseHydra = OffensiveMenu.Add("useHydra", new CheckBox("Use Ravenous Hydra ?"));
-                    TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP",
-                        new Slider("Use Ravenous Hydra When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP", new Slider("Use Ravenous Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Titanic Hydra");
                     UseTitanicHydra = OffensiveMenu.Add("useTitanic", new CheckBox("Use Titanic Hydra ?"));
-                    TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP",
-                        new Slider("Use Titanic Hydra When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP", new Slider("Use Titanic Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Youmuu");
                     UseYoumuu = OffensiveMenu.Add("useYoumuu ", new CheckBox("Use Youmuu ?"));
-                    TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP",
-                        new Slider("Use Youmuu  When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP", new Slider("Use Youmuu  When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Hextech");
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
-                    TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
-                        new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
+                    TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP", new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Manamune");
                     _useManamune = OffensiveMenu.Add("useManamune", new CheckBox("Use Manamune ?"));
-                    _targetHPManamune = OffensiveMenu.Add("useManamuneTargetHP",
-                        new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
-                    _myManaManamune = OffensiveMenu.Add("useManamuneManamine",
-                        new Slider("Use Manamune When mana is greater than ({0}%)", 30));
+                    _targetHPManamune = OffensiveMenu.Add("useManamuneTargetHP", new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
+                    _myManaManamune = OffensiveMenu.Add("useManamuneManamine", new Slider("Use Manamune When mana is greater than ({0}%)", 30));
 
                     OffensiveMenu.AddGroupLabel("FrostQueen");
                     _useFrostQueen = OffensiveMenu.Add("useFrostQueen", new CheckBox("Use FrostQueen ?"));
-                    _targetHPFrostQueen = OffensiveMenu.Add("useFrostQueenTargetHP",
-                        new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
-
+                    _targetHPFrostQueen = OffensiveMenu.Add("useFrostQueenTargetHP", new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
                 }
 
                 #endregion Offensive Menu
@@ -424,104 +431,125 @@ namespace KA_Activator_Rework
                 #endregion Ohm
 
                 #region Cleanse
+
                 //Items
                 private static readonly CheckBox _useDerbishBlade;
+
                 public static bool DerbishBlade
                 {
                     get { return _useDerbishBlade.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useMercurial;
+
                 public static bool Mercurial
                 {
                     get { return _useMercurial.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useQuickSilver;
+
                 public static bool QuickSilver
                 {
                     get { return _useQuickSilver.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useMikaelCleanse;
+
                 public static bool MikaelCleanse
                 {
                     get { return _useMikaelCleanse.CurrentValue; }
                 }
+
                 //Settings
                 private static readonly Slider _useCleanseHP;
+
                 public static int CleanseHP
                 {
                     get { return _useCleanseHP.CurrentValue; }
                 }
 
                 private static readonly Slider _useCleanseDelay;
+
                 public static int CleanseDelay
                 {
                     get { return _useCleanseDelay.CurrentValue; }
                 }
+
                 //CCs
                 private static readonly CheckBox _useForPolymorphs;
+
                 public static bool Polymorphs
                 {
                     get { return _useForPolymorphs.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForSnares;
+
                 public static bool Snares
                 {
                     get { return _useForSnares.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForTaunts;
+
                 public static bool Taunts
                 {
                     get { return _useForTaunts.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForSilences;
+
                 public static bool Silences
                 {
                     get { return _useForSilences.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForCharms;
+
                 public static bool Charms
                 {
                     get { return _useForCharms.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForStuns;
+
                 public static bool Stuns
                 {
                     get { return _useForStuns.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForBlinds;
+
                 public static bool Blinds
                 {
                     get { return _useForBlinds.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useForFears;
+
                 public static bool Fears
                 {
                     get { return _useForFears.CurrentValue; }
                 }
+
                 //Special Cases
                 private static readonly CheckBox _useCleanseZedUlt;
+
                 public static bool ZedUlt
                 {
                     get { return _useCleanseZedUlt.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useCleanseVladUlt;
+
                 public static bool VladUlt
                 {
                     get { return _useCleanseVladUlt.CurrentValue; }
                 }
 
                 private static readonly CheckBox _useCleanseMordeUlt;
+
                 public static bool MordeUlt
                 {
                     get { return _useCleanseMordeUlt.CurrentValue; }
@@ -532,54 +560,54 @@ namespace KA_Activator_Rework
                 static DeffensiveItems()
                 {
                     DefensiveMenu.AddGroupLabel("Zhonyas");
-                    UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
-                    HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP",
-                        new Slider("Use Zhonyas When My Health hits {0}%", 20));
+                    var CC = Game.MapId == GameMapId.CrystalScar;
+                    var TT = Game.MapId == GameMapId.TwistedTreeline;
+                    if (CC || TT)
+                    {
+                        UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Wooglet ?"));
+                        HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP", new Slider("Use Wooglet When My Health hits {0}%", 20));
+                    }
+                    else
+                    {
+                        UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
+                        HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP", new Slider("Use Zhonyas When My Health hits {0}%", 20));
+                    }
 
                     DefensiveMenu.AddGroupLabel("Seraph");
                     _useSeraph = DefensiveMenu.Add("useSeraph", new CheckBox("Use Seraph ?"));
-                    _myHPSeraph = DefensiveMenu.Add("useSeraphMyHP",
-                        new Slider("Use Seraph When My Health is lower than {0}%", 30));
+                    _myHPSeraph = DefensiveMenu.Add("useSeraphMyHP", new Slider("Use Seraph When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Face Of The Mountain");
                     _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use Face Of The Mountain ?"));
-                    _AllyHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
-                        new Slider("Use Face Of The Mountain When Ally Health is lower than {0}%", 30));
+                    _AllyHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP", new Slider("Use Face Of The Mountain When Ally Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Talisman");
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
-                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
-                        new Slider("Use Talisman When My Health hits {0}%", 30));
+                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP", new Slider("Use Talisman When My Health hits {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Mikael(to heal)");
                     _useMikaelHeal = DefensiveMenu.Add("useMikael", new CheckBox("Use Mikael(to heal) ?"));
-                    _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP",
-                        new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
+                    _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP", new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
 
                     DefensiveMenu.AddGroupLabel("Solari");
                     _useSolari = DefensiveMenu.Add("useSolari", new CheckBox("Use Solari ?"));
-                    _allyHealthSolari = DefensiveMenu.Add("useSolariMyHP",
-                        new Slider("Use Solari When Ally Health is lower than {0}%", 30));
+                    _allyHealthSolari = DefensiveMenu.Add("useSolariMyHP", new Slider("Use Solari When Ally Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Randuin");
                     _useRanduin = DefensiveMenu.Add("useRanduin", new CheckBox("Use Randuin ?"));
-                    _enemyCountRanduin = DefensiveMenu.Add("useRanduinEnemiesCount",
-                        new Slider("Use Randuin When there are at least ({0}) enemies in range", 2, 1, 5));
+                    _enemyCountRanduin = DefensiveMenu.Add("useRanduinEnemiesCount", new Slider("Use Randuin When there are at least ({0}) enemies in range", 2, 1, 5));
 
                     DefensiveMenu.AddGroupLabel("Ohm");
                     _useOhm = DefensiveMenu.Add("useOhm", new CheckBox("Use Ohm ?"));
-                    _healthOhm = DefensiveMenu.Add("useOhmMyHP",
-                        new Slider("Use Ohm When Ally Health is lower than {0}% and towers is targetting you", 30));
+                    _healthOhm = DefensiveMenu.Add("useOhmMyHP", new Slider("Use Ohm When Ally Health is lower than {0}% and towers is targetting you", 30));
 
                     DefensiveMenu.AddGroupLabel("Cleanse Settings");
                     _useDerbishBlade = DefensiveMenu.Add("useDerbishBlade", new CheckBox("Use DerbishBlade?"));
                     _useMercurial = DefensiveMenu.Add("useMercurial", new CheckBox("Use Mercurial?"));
                     _useQuickSilver = DefensiveMenu.Add("useQuickSilver", new CheckBox("Use QuickSilver?"));
                     _useMikaelCleanse = DefensiveMenu.Add("useMikaelCleanse", new CheckBox("Use Mikael(To Cleanse)?"));
-                    _useCleanseHP = DefensiveMenu.Add("useCleanseHP",
-                        new Slider("Use Cleanse items When Health is lower than ({0}%)", 30));
-                    _useCleanseDelay = DefensiveMenu.Add("useCleanseDelay",
-                        new Slider("Delay yo use the cleanse items({0} MS)", 100, 0, 500));
+                    _useCleanseHP = DefensiveMenu.Add("useCleanseHP", new Slider("Use Cleanse items When Health is lower than ({0}%)", 30));
+                    _useCleanseDelay = DefensiveMenu.Add("useCleanseDelay", new Slider("Delay yo use the cleanse items({0} MS)", 100, 0, 500));
                     DefensiveMenu.AddSeparator(1);
                     DefensiveMenu.AddLabel("What kind to CC to use the items");
                     _useForPolymorphs = DefensiveMenu.Add("usePolymorph", new CheckBox("Cleanse Polymorphs ?"));
@@ -595,13 +623,11 @@ namespace KA_Activator_Rework
                     _useCleanseZedUlt = DefensiveMenu.Add("useCCZedUlt", new CheckBox("Cleanse Zed Ultimate ?"));
                     _useCleanseVladUlt = DefensiveMenu.Add("useCCVladmirUlt", new CheckBox("Cleanse Vladmir Ultimate ?"));
                     _useCleanseMordeUlt = DefensiveMenu.Add("useCCMordekaiserUlt", new CheckBox("Cleanse Mordekaiser Ultimate ?"));
-
                 }
 
                 public static void Initialize()
                 {
                 }
-
             }
 
             public static class ConsumablesItems
@@ -722,20 +748,16 @@ namespace KA_Activator_Rework
 
                     ConsumablesMenu.AddGroupLabel("Refill Potion");
                     UseRefillPotion = ConsumablesMenu.Add("useRefill", new CheckBox("Use Refill Potion ?"));
-                    MinHPRefillPotion = ConsumablesMenu.Add("minhpRefill",
-                        new Slider("Min Health to use Refill Potion", 30));
+                    MinHPRefillPotion = ConsumablesMenu.Add("minhpRefill", new Slider("Min Health to use Refill Potion", 30));
 
                     ConsumablesMenu.AddGroupLabel("Corrupt Potion");
                     UseCorrupt = ConsumablesMenu.Add("useCorrupt", new CheckBox("Use Corrupt Potion ?"));
-                    MinHealthCorrupt = ConsumablesMenu.Add("minhpCorrupt",
-                        new Slider("Min Health to use Corrupt Potion", 30));
-                    MinManaCorrupt = ConsumablesMenu.Add("minmpCorrupt",
-                        new Slider("Min Mana to use Corrupt Potion", 30));
+                    MinHealthCorrupt = ConsumablesMenu.Add("minhpCorrupt", new Slider("Min Health to use Corrupt Potion", 30));
+                    MinManaCorrupt = ConsumablesMenu.Add("minmpCorrupt", new Slider("Min Mana to use Corrupt Potion", 30));
 
                     ConsumablesMenu.AddGroupLabel("Hunter`s Potion");
                     UseHunter = ConsumablesMenu.Add("useHunter", new CheckBox("Use Hunter`s Potion ?"));
-                    MinHealthHunter = ConsumablesMenu.Add("minhpHunter",
-                        new Slider("Min Health to use Hunter`s Potion", 30));
+                    MinHealthHunter = ConsumablesMenu.Add("minhpHunter", new Slider("Min Health to use Hunter`s Potion", 30));
                     MinManaHunter = ConsumablesMenu.Add("minmpHunter", new Slider("Min Mana to use Hunter`s Potion", 30));
                 }
 
@@ -827,7 +849,6 @@ namespace KA_Activator_Rework
 
                 #endregion Ghost
 
-
                 static SummonerSpells()
                 {
                     #region SmiteMenu
@@ -916,6 +937,15 @@ namespace KA_Activator_Rework
                     get { return _DelayOff.CurrentValue; }
                 }
 
+                //Offensive
+                private static readonly Slider _DelayDef;
+
+
+                public static int DelayBetweenDef
+                {
+                    get { return _DelayDef.CurrentValue; }
+                }
+
                 //Danger
                 private static readonly Slider EnemyRange;
                 private static readonly Slider EnemySlider;
@@ -953,7 +983,9 @@ namespace KA_Activator_Rework
                 {
                     SettingsMenu.AddGroupLabel("Offensive Settings");
                     _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
-                    _DelayOff = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
+                    _DelayOff = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used ({0}MS)", 1000, 100, 5000));
+                    SettingsMenu.AddGroupLabel("Deffensive Settings");
+                    _DelayDef = SettingsMenu.Add("delaydefbetween", new Slider("Delay between to use Defensive items ({0}MS)", 1000, 100, 5000));
                     SettingsMenu.AddGroupLabel("Danger Settings");
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1600, 600, 2500));
@@ -962,11 +994,11 @@ namespace KA_Activator_Rework
                     AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
                     SettingsMenu.AddSeparator();
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
-                    foreach (var spell in DamageHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
+                    foreach (var spell in DamageHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.AllHeroes.Any(b => b.Hero == x.Hero)))
                     {
                         SettingsMenu.Add(spell.Hero.ToString() + spell.Slot, new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot + "delay",
-                            new Slider("Delay " + spell.Hero, spell.Delay, 0, 5000));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot + "delay", new Slider("Delay " + spell.Hero, spell.Delay, 0, 5000));
+                        SettingsMenu.AddSeparator(1);
                     }
                 }
 

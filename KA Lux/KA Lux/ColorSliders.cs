@@ -104,7 +104,6 @@ namespace KA_Lux
             private Vector2 _offset;
             private Color SelectedColor { get; set; }
 
-            private Sprite _colorPickerSprite;
             private Sprite _colorOverlaySprite;
             private TextureLoader _textureLoader;
 
@@ -138,7 +137,6 @@ namespace KA_Lux
             {
                 _offset = new Vector2(0, 10);
                 _textureLoader = new TextureLoader();
-                _colorPickerSprite = new Sprite(_textureLoader.Load("ColorPickerSprite", Resource1.ColorPickerSprite));
                 _colorOverlaySprite = new Sprite(_textureLoader.Load("ColorOverlaySprite", ContructColorOverlaySprite()));
                 SelectedColor = color;
             }
@@ -150,7 +148,6 @@ namespace KA_Lux
                 var rect = new SharpDX.Rectangle((int)MainMenu.Position.X + 160, (int)MainMenu.Position.Y + 95 + 50, 750, 380);
                 if (MainMenu.IsVisible && IsVisible && rect.IsInside(Position))
                 {
-                    _colorPickerSprite.Draw(new Vector2(Position.X + 522, Position.Y - 34));
                     _colorOverlaySprite.Color = SelectedColor;
                     _colorOverlaySprite.Draw(new Vector2(Position.X + 522 + 1, Position.Y - 34 + 1));
                     return true;

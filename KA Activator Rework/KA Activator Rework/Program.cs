@@ -12,7 +12,7 @@ namespace KA_Activator_Rework
 
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
-            Activator.Initialize();
+            Activator.Initialize();            
         }
     }
 }
