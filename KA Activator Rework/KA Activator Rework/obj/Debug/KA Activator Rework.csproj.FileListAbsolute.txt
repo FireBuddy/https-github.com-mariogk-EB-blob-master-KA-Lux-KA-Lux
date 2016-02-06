@@ -1,0 +1,2 @@
+C:\Users\Mario\Documents\GitHub\EB\KA Activator Rework\KA Activator Rework\bin\Debug\KA Activator Rework.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA Activator Rework\KA Activator Rework\obj\Debug\KA Activator Rework.csprojResolveAssemblyReference.cache

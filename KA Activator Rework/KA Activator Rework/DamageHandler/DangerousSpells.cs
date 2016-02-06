@@ -64,7 +64,7 @@ namespace KA_Activator_Rework.DamageHandler
             new DangerousSpell(Champion.LeeSin, SpellSlot.R, true, 0),
             new DangerousSpell(Champion.Leona, SpellSlot.R, true, 0),
             new DangerousSpell(Champion.Lissandra, SpellSlot.R, true, 0),
-            new DangerousSpell(Champion.Lux, SpellSlot.R, true, 200),
+            new DangerousSpell(Champion.Lux, SpellSlot.R, true, 0),
             new DangerousSpell(Champion.Lux, SpellSlot.Q, false, 350),
             new DangerousSpell(Champion.Malphite, SpellSlot.R, true, 0),
             new DangerousSpell(Champion.Malzahar, SpellSlot.R, true, 0),

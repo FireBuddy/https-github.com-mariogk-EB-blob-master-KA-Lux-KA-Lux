@@ -994,7 +994,7 @@ namespace KA_Activator_Rework
                     AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
                     SettingsMenu.AddSeparator();
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
-                    foreach (var spell in DamageHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.AllHeroes.Any(b => b.Hero == x.Hero)))
+                    foreach (var spell in DamageHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
                         SettingsMenu.Add(spell.Hero.ToString() + spell.Slot, new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
                         SettingsMenu.Add(spell.Hero.ToString() + spell.Slot + "delay", new Slider("Delay " + spell.Hero, spell.Delay, 0, 5000));

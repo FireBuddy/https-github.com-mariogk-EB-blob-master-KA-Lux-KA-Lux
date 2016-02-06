@@ -69,8 +69,6 @@ namespace KA_Activator_Rework.DamageHandler
             var champion = missile.SpellCaster as AIHeroClient;
             if (champion == null) return;
 
-            Missiles.Add(missile);
-
             var spell1 = missile.SpellCaster.Spellbook.Spells.FirstOrDefault(s => s.Name.ToLower().Equals(missile.SData.Name.ToLower()));
             var spell2 = missile.SpellCaster.Spellbook.Spells.FirstOrDefault(s => (s.Name.ToLower() + "missile").Equals(missile.SData.Name.ToLower()));
 
@@ -79,10 +77,15 @@ namespace KA_Activator_Rework.DamageHandler
             {
                 slot = spell1.Slot;
             }
-            else if(spell2 != null)
+            else if (spell2 != null)
             {
                 slot = spell2.Slot;
             }
+
+            //Because of the missile after Lux`s R
+            if (champion.Name == "Lux" && slot == SpellSlot.R)return;
+
+            Missiles.Add(missile);
 
             if(slot == SpellSlot.Unknown)return;
             var hero = champion.Hero;
@@ -142,8 +145,8 @@ namespace KA_Activator_Rework.DamageHandler
             var hero = sender as AIHeroClient;
             if (hero == null || hero.IsAlly) return;
 
-            var dangerousspell =
-                DangerousSpells.Spells.FirstOrDefault(
+            var specialspells =
+                SpecialSpells.Spells.FirstOrDefault(
                     x =>
                         x.Hero == hero.Hero && args.Slot == x.Slot &&
                         Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
@@ -156,7 +159,7 @@ namespace KA_Activator_Rework.DamageHandler
                     projection.SegmentPoint.Distance(Player.Instance.Position) <=
                     args.SData.CastRadius + Player.Instance.BoundingRadius + 30)
                 {
-                    if (dangerousspell != null)
+                    if (specialspells != null)
                     {
                         ReceivingDangSpell = true;
                         Core.DelayAction(() => ReceivingDangSpell = false, 80);
@@ -166,7 +169,7 @@ namespace KA_Activator_Rework.DamageHandler
             //Targetted spell
             else
             {
-                if (dangerousspell != null && args.Target.IsMe)
+                if (specialspells != null && args.Target.IsMe)
                 {
                     ReceivingDangSpell = true;
                     Core.DelayAction(() => ReceivingDangSpell = false, 80);
@@ -181,7 +184,7 @@ namespace KA_Activator_Rework.DamageHandler
                 return DangSpells != null && DangSpells.Any(miss => miss.IsInRange(target, target.BoundingRadius + 100) || miss.Target == target);
             }
             if (!(target.HealthPercent <= HealthPercent)) return false;
-            return Missiles != null && Missiles.Any(miss => miss.IsInRange(target, target.BoundingRadius + 30) || miss.Target == target);
+            return Missiles != null && Missiles.Any(miss => miss.IsInRange(target, target.BoundingRadius + 40) || miss.Target == target);
         }
     }
 }
