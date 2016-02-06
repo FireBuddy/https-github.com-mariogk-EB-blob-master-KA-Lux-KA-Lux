@@ -1,0 +1,2 @@
+C:\Users\Mario\Documents\GitHub\EB\KA RecallTracker\KA RecallTracker\bin\Debug\KA RecallTracker.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA RecallTracker\KA RecallTracker\bin\Debug\KA Trackers.exe.config

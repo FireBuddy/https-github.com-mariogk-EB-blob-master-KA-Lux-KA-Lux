@@ -30,33 +30,47 @@ namespace KA_Rumble
             
             if (target != null && target.CountEnemiesInRange(1000) == 1)
             {
-                var initPos = target.Position.To2D() + 500* target.Direction.To2D().Perpendicular();
-                var endPos = target.Position.Extend(initPos.To3D(), 25);
-
-                var pred = SpellManager.R.GetPrediction(target);
-
-                if (pred.HitChance >= HitChance.High)
+                if (target.IsMoving)
                 {
-                    Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
+                    var initPos = target.Position.To2D() + 500 * target.Direction.To2D().Perpendicular();
+                    var endPos = target.Position.Extend(initPos.To3D(), 25);
+
+                    var pred = SpellManager.R.GetPrediction(target);
+
+                    if (pred.HitChance >= HitChance.High)
+                    {
+                        Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
+                    }
                 }
+                else
+                {
+                    var initPos = target.Position.To2D() + 500 * target.Direction.To2D().Perpendicular();
+                    var endPos = target.Position.Extend(initPos.To3D(), -250);
+
+                    var pred = SpellManager.R.GetPrediction(target);
+
+                    if (pred.HitChance >= HitChance.High)
+                    {
+                        Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
+                    }
+                }
+
             }
 
             if (target != null && target.CountEnemiesInRange(1000) > 1)
             {
-                var initPos = target.Position.To2D() + 500 * target.Direction.To2D().Perpendicular();
-
                 var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget()).Select(enemy => enemy.Position.To2D()).ToList();
 
-                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 1000f, minimunE, initPos);
+                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 1000, minimunE);
 
-                Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
+                Player.CastSpell(SpellSlot.R, endPos.Shorten(Player.Instance.Position.To2D(), 1000).To3D(), endPos.To3D());
             }
         }
 
-        private static Vector2 GetBestEnPos(List<Vector2> enemies, float width, float range, int minenemies, Vector2 initpos)
+        private static Vector2 GetBestEnPos(List<Vector2> enemies, float width, float range, int minenemies)
         {
             var enemyCount = 0;
-            var startPos = initpos;
+            var startPos = Player.Instance.Position.To2D();
             var result = new Vector2();
 
             var posiblePositions = new List<Vector2>();
