@@ -32,8 +32,8 @@ namespace KA_Rumble
             {
                 if (target.IsMoving)
                 {
-                    var initPos = target.Position.To2D() + 500 * target.Direction.To2D().Perpendicular();
-                    var endPos = target.Position.Extend(initPos.To3D(), 25);
+                    var initPos = target.Position.To2D() - 125 * target.Direction.To2D().Perpendicular();
+                    var endPos = target.Position.Extend(initPos.To3D(), -1000);
 
                     var pred = SpellManager.R.GetPrediction(target);
 
@@ -44,8 +44,8 @@ namespace KA_Rumble
                 }
                 else
                 {
-                    var initPos = target.Position.To2D() + 500 * target.Direction.To2D().Perpendicular();
-                    var endPos = target.Position.Extend(initPos.To3D(), -250);
+                    var initPos = target.Position.To2D() - 490 * target.Direction.To2D().Perpendicular();
+                    var endPos = target.Position.Extend(initPos.To3D(), -510);
 
                     var pred = SpellManager.R.GetPrediction(target);
 
@@ -61,16 +61,17 @@ namespace KA_Rumble
             {
                 var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget()).Select(enemy => enemy.Position.To2D()).ToList();
 
-                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 1000, minimunE);
+                var initPos = target.Position.To2D() - 125 * target.Direction.To2D().Perpendicular();
+                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, SpellManager.R.Range, minimunE, initPos);
 
-                Player.CastSpell(SpellSlot.R, endPos.Shorten(Player.Instance.Position.To2D(), 1000).To3D(), endPos.To3D());
+                Player.CastSpell(SpellSlot.R, endPos.Shorten(initPos, SpellManager.R.Range).To3D(), endPos.To3D());
             }
         }
 
-        private static Vector2 GetBestEnPos(List<Vector2> enemies, float width, float range, int minenemies)
+        public static Vector2 GetBestEnPos(List<Vector2> enemies, float width, float range, int minenemies, Vector2 initpos)
         {
             var enemyCount = 0;
-            var startPos = Player.Instance.Position.To2D();
+            var startPos = initpos;
             var result = new Vector2();
 
             var posiblePositions = new List<Vector2>();

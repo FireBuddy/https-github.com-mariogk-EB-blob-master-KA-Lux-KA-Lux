@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Rendering;
-
+using SharpDX;
 using Settings = KA_Rumble.Config.Modes.Draw;
 
 namespace KA_Rumble
