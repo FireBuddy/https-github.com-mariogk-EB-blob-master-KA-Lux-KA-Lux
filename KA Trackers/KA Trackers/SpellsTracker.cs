@@ -165,8 +165,8 @@ namespace KA_Trackers
                     var percent = (cooldown > 0 && Math.Abs(spell.Cooldown) > float.Epsilon) ? 1f - (cooldown / spell.Cooldown) : 1f;
                     var spellPos = GetSpellOffset(unit,slot);
 
-                    Drawing.DrawLine(new Vector2(spellPos.X, spellPos.Y + 2),
-                        new Vector2(spellPos.X + (int)(percent * 22), spellPos.Y + 2),
+                    Drawing.DrawLine(new Vector2(spellPos.X, spellPos.Y + 18),
+                        new Vector2(spellPos.X + (int)(percent * 22), spellPos.Y + 18),
                         5 , spell.IsLearned ? GetDrawColor(percent) : Color.SlateGray);
 
                     if (!spell.IsLearned || !(cooldown > 0)) continue;
