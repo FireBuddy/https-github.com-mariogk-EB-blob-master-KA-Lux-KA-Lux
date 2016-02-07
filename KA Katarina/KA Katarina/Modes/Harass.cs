@@ -15,20 +15,22 @@ namespace KA_Katarina.Modes
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
-            if (target == null || target.CountEnemiesInRange(SpellManager.R.Range) <= 2) return;
+            if (target == null) return;
 
-            if (SpellManager.Q.IsReady() && Settings.UseQ)
+            if (SpellManager.Q.IsReady() && target.IsValidTarget(Q.Range) && PermaActive._ulting == false &&
+                Settings.UseQ)
             {
                 SpellManager.Q.Cast(target);
             }
 
-            if (SpellManager.E.IsReady() && target.IsValidTarget(SpellManager.E.Range) && Settings.UseE &&
-                target.HealthPercent + 15 > Player.Instance.HealthPercent)
+            if (SpellManager.E.IsReady() && target.IsValidTarget(E.Range) && PermaActive._ulting == false &&
+                Settings.UseE)
             {
                 SpellManager.E.Cast(target);
             }
 
-            if (SpellManager.W.IsReady() && target.IsValidTarget(SpellManager.W.Range) && Settings.UseW)
+            if (SpellManager.W.IsReady() && target.IsValidTarget(W.Range) && PermaActive._ulting == false &&
+                Settings.UseW)
             {
                 SpellManager.W.Cast();
             }

@@ -16,8 +16,7 @@ namespace KA_Katarina.Modes
 
         private static float dmgQstack(Obj_AI_Base target)
         {
-            var damage = new float[] { 15, 30, 45, 60, 75 }[Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Level] +
-                              0.15f * Player.Instance.FlatMagicDamageMod;
+            var damage = new float[] { 15, 30, 45, 60, 75 }[Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Level -1] +0.15f * Player.Instance.FlatMagicDamageMod;
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, damage) - 10;
         }
 

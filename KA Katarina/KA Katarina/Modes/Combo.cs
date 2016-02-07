@@ -27,13 +27,10 @@ namespace KA_Katarina.Modes
             var target = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
             if (target == null) return;
             
-            /*
-
-            if (KatarinaHu3.ComboMenu["Rcancel"].Cast<CheckBox>().CurrentValue)
+            if (Settings.UseRCancel)
             {
                 CancelCheck();
             }
-            */
 
             if (SpellManager.Q.IsReady() && target.IsValidTarget(Q.Range) && PermaActive._ulting == false && Settings.UseQ)
             {
@@ -54,7 +51,7 @@ namespace KA_Katarina.Modes
             {
                 Orbwalker.DisableAttacking = true;
                 Orbwalker.DisableMovement = true;
-                Core.DelayAction(() => SpellManager.R.Cast(), 50);
+                Core.DelayAction(() => SpellManager.R.Cast(), 100);
             }
         }
     }

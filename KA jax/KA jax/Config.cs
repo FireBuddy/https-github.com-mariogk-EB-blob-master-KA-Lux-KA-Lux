@@ -8,7 +8,7 @@ using Color = System.Drawing.Color;
 // ReSharper disable InconsistentNaming
 // ReSharper disable MemberHidesStaticFromOuterClass
 
-namespace KA_Katarina
+namespace KA_jax
 {
     public static class Config
     {
@@ -58,8 +58,6 @@ namespace KA_Katarina
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
-                //RCancel
-                private static readonly CheckBox _useRCancel;
 
                 public static bool UseQ
                 {
@@ -80,10 +78,6 @@ namespace KA_Katarina
                 {
                     get { return _useR.CurrentValue; }
                 }
-                public static bool UseRCancel
-                {
-                    get { return _useRCancel.CurrentValue; }
-                }
 
                 static Combo()
                 {
@@ -93,8 +87,6 @@ namespace KA_Katarina
                     _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
                     _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
-                    SpellsMenu.AddGroupLabel("Combo Settings:");
-                    _useRCancel = SpellsMenu.Add("comboRCancel", new CheckBox("Cancel R if target is out of range ?"));
                 }
 
                 public static void Initialize()
@@ -141,8 +133,8 @@ namespace KA_Katarina
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
                     _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
                     SpellsMenu.AddGroupLabel("Harass Settings:");
+                    _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -195,7 +187,9 @@ namespace KA_Katarina
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
                     _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
+                    FarmMenu.AddGroupLabel("LaneClear Settings:");
+                    _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
+                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -247,9 +241,8 @@ namespace KA_Katarina
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
-                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
-                    _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
+                    FarmMenu.AddGroupLabel("LastHit Settings:");
+                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -277,11 +270,30 @@ namespace KA_Katarina
                 {
                     get { return _miscMana.CurrentValue; }
                 }
+                //KS
+                private static readonly CheckBox _QWKillsteal;
+                private static readonly Slider _ksMana;
+
+                public static bool QWKillSteal
+                {
+                    get { return _QWKillsteal.CurrentValue; }
+                }
+
+                public static int KillStealMana
+                {
+                    get { return _ksMana.CurrentValue; }
+                }
 
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
+                    _interruptSpell = MiscMenu.Add("interruptE", new CheckBox("Use E to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserE", new CheckBox("Use E to antigapcloser spells ?"));
+                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    MiscMenu.AddGroupLabel("KillSteal Settings");
+                    _QWKillsteal = MiscMenu.Add("QWkillsteal", new CheckBox("Use Q+W to KS ?"));
+                    _ksMana = MiscMenu.Add("miscMana", new Slider("Min mana to use KillSteal spells ?", 10));
                 }
 
                 public static void Initialize()

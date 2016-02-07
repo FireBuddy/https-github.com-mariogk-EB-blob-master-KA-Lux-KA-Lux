@@ -85,7 +85,7 @@ namespace KA_Rumble
             {
                 if (pos.Distance(startPos, true) <= range * range)
                 {
-                    var endPos = startPos + range * (pos - startPos).Normalized();
+                    var endPos = startPos.Extend(pos, range);
 
                     var count =
                         enemies.Count(pos2 => pos2.Distance(startPos, endPos, true, true) <= width * width);
