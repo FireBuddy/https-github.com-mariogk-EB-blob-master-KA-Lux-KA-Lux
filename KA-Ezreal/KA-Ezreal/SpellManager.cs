@@ -13,8 +13,8 @@ namespace KA_Ezreal
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 1100, SkillShotType.Linear, 350, 2000, 65);
-            W = new Spell.Skillshot(SpellSlot.W, 970, SkillShotType.Linear, 350, 1550, 80)
+            Q = new Spell.Skillshot(SpellSlot.Q, 1020, SkillShotType.Linear, 350, 2000, 65);
+            W = new Spell.Skillshot(SpellSlot.W, 920, SkillShotType.Linear, 350, 1550, 80)
             {
                 AllowedCollisionCount = int.MaxValue
             };

@@ -35,7 +35,7 @@ namespace KA_Ezreal
         private static void Orbwalker_OnPostAttack(AttackableUnit target, System.EventArgs args)
         {
             CanQCancel = SpellManager.Q.IsReady();
-            if (!CanWCancel)
+            if (!CanQCancel)
             {
                 CanWCancel = SpellManager.W.IsReady();
             }

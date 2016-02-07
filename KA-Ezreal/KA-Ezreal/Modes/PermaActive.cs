@@ -2,6 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
+
 using Settings = KA_Ezreal.Config.Modes.Misc;
 using Configs = KA_Ezreal.Config.Modes.Harass;
 
@@ -26,7 +27,9 @@ namespace KA_Ezreal.Modes
                 if (target != null)
                 {
                     if (target.HasBuffOfType(BuffType.Stun) || target.HasBuffOfType(BuffType.Snare) ||
-                        target.HasBuffOfType(BuffType.Knockup))
+                        target.HasBuffOfType(BuffType.Knockup) &&
+                        target.IsInRange(Player.Instance, Settings.maxR) &&
+                        !target.IsInRange(Player.Instance, Settings.minR))
                     {
                         R.Cast(target.Position);
                     }
@@ -40,7 +43,9 @@ namespace KA_Ezreal.Modes
                 {
                     if (Prediction.Health.GetPrediction(targetR, R.CastDelay) > 10 &&
                         Prediction.Health.GetPrediction(targetR, R.CastDelay) <
-                        SpellDamage.GetRealDamage(SpellSlot.R, targetR))
+                        SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
+                        targetR.IsInRange(Player.Instance, Settings.maxR) &&
+                        !targetR.IsInRange(Player.Instance, Settings.minR))
                     {
                         var pred = R.GetPrediction(targetR);
                         if (pred.HitChance >= HitChance.High)
@@ -59,7 +64,7 @@ namespace KA_Ezreal.Modes
                 if (target.IsValidTarget(Q.Range))
                 {
                     var pred = Q.GetPrediction(target);
-                    if (pred.HitChance >= HitChance.High)
+                    if (pred.HitChance >= HitChance.Medium)
                     {
                         Q.Cast(pred.CastPosition);
                     }

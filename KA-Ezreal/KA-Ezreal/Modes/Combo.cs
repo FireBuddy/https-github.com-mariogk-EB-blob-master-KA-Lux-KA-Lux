@@ -22,7 +22,7 @@ namespace KA_Ezreal.Modes
                 !target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
                 var pred = Q.GetPrediction(target);
-                if (pred.HitChance >= HitChance.High)
+                if (pred.HitChance >= HitChance.Medium)
                 {
                     Q.Cast(pred.CastPosition);
                 }
@@ -33,7 +33,7 @@ namespace KA_Ezreal.Modes
                 !target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
                 var pred = W.GetPrediction(target);
-                if (pred.HitChance >= HitChance.Medium)
+                if (pred.HitChance >= HitChance.High)
                 {
                     W.Cast(pred.CastPosition);
                 }
@@ -44,7 +44,7 @@ namespace KA_Ezreal.Modes
                 target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
                 var pred = Q.GetPrediction(target);
-                if (pred.HitChance >= HitChance.High)
+                if (pred.HitChance >= HitChance.Medium)
                 {
                     Q.Cast(pred.CastPosition);
                 }
@@ -54,7 +54,7 @@ namespace KA_Ezreal.Modes
                 target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
                 var pred = W.GetPrediction(target);
-                if (pred.HitChance >= HitChance.Medium)
+                if (pred.HitChance >= HitChance.High)
                 {
                     W.Cast(pred.CastPosition);
                 }
