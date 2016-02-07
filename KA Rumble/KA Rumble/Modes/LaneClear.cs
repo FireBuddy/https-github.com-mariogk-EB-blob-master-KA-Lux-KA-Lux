@@ -17,7 +17,7 @@ namespace KA_Rumble.Modes
         {
             var minion =
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
-                    .OrderByDescending(m => m.Health)
+                    .OrderBy(m => m.Health)
                     .FirstOrDefault(m => m.IsValidTarget(E.Range));
 
             if (minion == null) return;

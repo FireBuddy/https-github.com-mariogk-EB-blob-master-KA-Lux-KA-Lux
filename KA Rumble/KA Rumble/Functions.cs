@@ -28,43 +28,35 @@ namespace KA_Rumble
         public static void CastR(AIHeroClient target, int minimunE)
         {
             
-            if (target != null && target.CountEnemiesInRange(1000) == 1)
+            if (target != null && target.CountEnemiesInRange(1000) == 1 && minimunE == 1)
             {
                 if (target.IsMoving)
                 {
-                    var initPos = target.Position.To2D() - 125 * target.Direction.To2D().Perpendicular();
+                    var initPos = target.Position.To2D() - 125*target.Direction.To2D().Perpendicular();
                     var endPos = target.Position.Extend(initPos.To3D(), -1000);
 
-                    var pred = SpellManager.R.GetPrediction(target);
-
-                    if (pred.HitChance >= HitChance.High)
-                    {
-                        Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
-                    }
+                    Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
                 }
                 else
                 {
-                    var initPos = target.Position.To2D() - 490 * target.Direction.To2D().Perpendicular();
+                    var initPos = target.Position.To2D() - 490*target.Direction.To2D().Perpendicular();
                     var endPos = target.Position.Extend(initPos.To3D(), -510);
 
-                    var pred = SpellManager.R.GetPrediction(target);
+                    Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
 
-                    if (pred.HitChance >= HitChance.High)
-                    {
-                        Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
-                    }
                 }
 
             }
 
-            if (target != null && target.CountEnemiesInRange(1000) > 1)
+            if (target != null && target.CountEnemiesInRange(1000) > 1 && minimunE > 1)
             {
                 var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget()).Select(enemy => enemy.Position.To2D()).ToList();
 
-                var initPos = target.Position.To2D() - 125 * target.Direction.To2D().Perpendicular();
-                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, SpellManager.R.Range, minimunE, initPos);
+                var initPos = target.Position.To2D() - 200 * target.Direction.To2D().Perpendicular();
+                var endPos = GetBestEnPos(enemies, SpellManager.R.Width, 990, minimunE, initPos);
+                Chat.Print("Casting Ult");
 
-                Player.CastSpell(SpellSlot.R, endPos.Shorten(initPos, SpellManager.R.Range).To3D(), endPos.To3D());
+                Player.CastSpell(SpellSlot.R, initPos.To3D(), endPos.To3D());
             }
         }
 
