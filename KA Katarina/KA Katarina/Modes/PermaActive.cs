@@ -21,7 +21,7 @@ namespace KA_Katarina.Modes
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, damage) - 10;
         }
 
-        private static void CheckUlt()
+        public static void CheckUlt()
         {
             if (!Player.Instance.IsRecalling())
             {
@@ -105,7 +105,7 @@ namespace KA_Katarina.Modes
                 target.CountEnemiesInRange(SpellManager.R.Range) <= 2 && Settings.UseQ && Settings.UseW && Settings.UseE)
             {
                 SpellManager.E.Cast(target);
-                SpellManager.W.Cast(target);
+                SpellManager.W.Cast();
                 SpellManager.Q.Cast(target);
             }
             //E+W+Q

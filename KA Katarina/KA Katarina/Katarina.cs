@@ -16,6 +16,12 @@ namespace KA_Katarina
             EventsManager.Initialize();
 
             Drawing.OnDraw += OnDraw;
+            Game.OnUpdate += Game_OnUpdate;
+        }
+
+        private static void Game_OnUpdate(EventArgs args)
+        {
+            Modes.PermaActive.CheckUlt();
         }
 
         private static void OnDraw(EventArgs args)
