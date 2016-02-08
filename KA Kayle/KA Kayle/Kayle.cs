@@ -1,12 +1,12 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK.Rendering;
-
+using KA_Kayle.DMGHandler;
 using Settings = KA_Kayle.Config.Modes.Draw;
 
 namespace KA_Kayle
 {
-     class Kayle
+    internal class Kayle
     {
         public static void Initialize()
         {
@@ -15,6 +15,7 @@ namespace KA_Kayle
             ModeManager.Initialize();
             DamageIndicator.Initialize(SpellDamage.GetTotalDamage);
             EventsManager.Initialize();
+            DamageHandler.Initialize();
 
             Drawing.OnDraw += OnDraw;
         }
