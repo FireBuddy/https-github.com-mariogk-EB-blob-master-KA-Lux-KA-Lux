@@ -42,7 +42,7 @@ namespace KA_DamageIndicator
                 new FontDescription
                 {
                     FaceName = "Segoi UI",
-                    Height = 12,
+                    Height = 11,
                     Weight = FontWeight.Bold,
                     OutputPrecision = FontPrecision.Default,
                     Quality = FontQuality.ClearType,
@@ -84,7 +84,7 @@ namespace KA_DamageIndicator
                         _Font.DrawText(null, string.Concat(Math.Ceiling(damage / unit.TotalShieldHealth() * 100), "%"), (int)unit.HPBarPosition[0] + 102, (int)unit.HPBarPosition[1] + 29, color);
                         if (Settings.DrawStatistics)
                         {
-                            _Font2.DrawText(null, "-" + Math.Round(SpellDamage.GetTotalDamage(unit)) + " / " + Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] + 82, (int)unit.HPBarPosition[1] - 9, color);
+                            _Font2.DrawText(null, "-" + Math.Round(SpellDamage.GetTotalDamage(unit)) + " / " + Math.Round((unit.Health - SpellDamage.GetTotalDamage(unit))), (int)unit.HPBarPosition[0] , (int)unit.HPBarPosition[1] - 8, color);
                         }
                     }
                 }
