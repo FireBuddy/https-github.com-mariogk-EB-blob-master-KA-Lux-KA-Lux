@@ -1,0 +1,11 @@
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\KA jax.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\KA jax.exe
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\KA jax.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\obj\Debug\KA jax.exe
+C:\Users\Mario\Documents\GitHub\EB\KA jax\KA jax\obj\Debug\KA jax.pdb
