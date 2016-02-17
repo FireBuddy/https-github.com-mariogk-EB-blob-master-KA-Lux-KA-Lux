@@ -20,7 +20,7 @@ namespace KA_Lux.Modes
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 var pred = Q.GetPrediction(target);
-                if (pred.HitChance >= HitChance.High)
+                if (pred.HitChancePercent >= 85)
                 {
                     Q.Cast(pred.CastPosition);
                 }

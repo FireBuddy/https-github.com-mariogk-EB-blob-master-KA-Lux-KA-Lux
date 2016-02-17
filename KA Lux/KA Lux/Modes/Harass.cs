@@ -1,6 +1,5 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
 using Settings = KA_Lux.Config.Modes.Harass;
 
 namespace KA_Lux.Modes
@@ -20,7 +19,7 @@ namespace KA_Lux.Modes
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 var pred = Q.GetPrediction(target);
-                if (pred.HitChance >= HitChance.High)
+                if (pred.HitChancePercent >= 75)
                 {
                     Q.Cast(pred.CastPosition);
                 }
