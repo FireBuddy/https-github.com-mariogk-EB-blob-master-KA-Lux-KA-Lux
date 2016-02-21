@@ -30,7 +30,11 @@ namespace KA_Lux.Modes
                 ? target.HasBuffOfType(BuffType.Snare)
                 : target.IsValidTarget(E.Range))
             {
-                E.Cast(E.GetPrediction(target).CastPosition);
+                var pred = E.GetPrediction(target);
+                if (pred.HitChancePercent >= 70)
+                {
+                    E.Cast(pred.CastPosition);
+                }
                 PermaActive.CastedE = true;
             }
 
@@ -50,7 +54,7 @@ namespace KA_Lux.Modes
                     else
                     {
                         var pred = R.GetPrediction(target);
-                        if (pred.HitChance >= HitChance.High)
+                        if (pred.HitChancePercent >= 90)
                         {
                             R.Cast(pred.CastPosition);
                         }
