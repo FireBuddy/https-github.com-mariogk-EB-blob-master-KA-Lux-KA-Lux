@@ -1,0 +1,12 @@
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\KA Lux.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\KA Lux.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\KA Lux.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\obj\Debug\KA Lux.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\obj\Debug\KA Lux.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Lux\KA Lux\obj\Debug\KA Lux.pdb

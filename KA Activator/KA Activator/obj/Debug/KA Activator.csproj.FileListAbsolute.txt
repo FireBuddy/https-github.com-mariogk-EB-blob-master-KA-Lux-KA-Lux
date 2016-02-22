@@ -1,0 +1,11 @@
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\KA Activator.exe.config
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\KA Activator.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\KA Activator.pdb
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\SharpDX.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\obj\Debug\KA Activator.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\obj\Debug\KA Activator.exe
+C:\Users\Mario\Documents\GitHub\EB\KA Activator\KA Activator\obj\Debug\KA Activator.pdb
