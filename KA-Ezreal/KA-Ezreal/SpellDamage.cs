@@ -60,8 +60,16 @@ namespace KA_Ezreal
             {
                 case SpellSlot.Q:
 
-                    var sheen = 
-                    damage = new float[] { 35, 55, 75, 95, 115 }[spellLevel] + 0.40f * Player.Instance.FlatMagicDamageMod + 1.1f * Player.Instance.FlatPhysicalDamageMod;
+                    var sheen = new Item(ItemId.Sheen);
+                    if (sheen.IsOwned() && sheen.IsReady())
+                    {
+                        damage += Player.Instance.GetItemDamage(target, ItemId.Sheen);
+                        damage += new float[] { 35, 55, 75, 95, 115 }[spellLevel] + 0.40f * Player.Instance.FlatMagicDamageMod + 1.1f * Player.Instance.FlatPhysicalDamageMod;
+                    }
+                    else
+                    {
+                        damage = new float[] { 35, 55, 75, 95, 115 }[spellLevel] + 0.40f * Player.Instance.FlatMagicDamageMod + 1.1f * Player.Instance.FlatPhysicalDamageMod;
+                    }
                     break;
 
                 case SpellSlot.W:
@@ -71,7 +79,7 @@ namespace KA_Ezreal
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 125, 175, 225, 275 }[spellLevel] + 0.75f * Player.Instance.FlatMagicDamageMod + 0.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:

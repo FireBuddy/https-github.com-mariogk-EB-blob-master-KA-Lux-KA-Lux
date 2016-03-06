@@ -20,7 +20,7 @@ namespace KA_Ezreal.Modes
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(
                         m => m.IsValidTarget(Q.Range) && Prediction.Health.GetPrediction(m,Q.CastDelay) <= SpellDamage.GetRealDamage(SpellSlot.Q, m) &&
-                        Prediction.Health.GetPrediction(m, Q.CastDelay) > 10);
+                        Prediction.Health.GetPrediction(m, Q.CastDelay) > Player.Instance.GetAutoAttackDamage(m));
 
             if (laneMinion == null) return;
 
