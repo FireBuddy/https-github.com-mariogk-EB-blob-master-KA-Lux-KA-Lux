@@ -48,7 +48,7 @@ namespace KA_Ezreal.Modes
                         !targetR.IsInRange(Player.Instance, Settings.minR))
                     {
                         var pred = R.GetPrediction(targetR);
-                        if (pred.HitChance >= HitChance.High)
+                        if (pred.HitChancePercent >= 90)
                         {
                             R.Cast(pred.CastPosition);
                         }
@@ -64,7 +64,7 @@ namespace KA_Ezreal.Modes
                 if (target.IsValidTarget(Q.Range))
                 {
                     var pred = Q.GetPrediction(target);
-                    if (pred.HitChance >= HitChance.Medium)
+                    if (pred.HitChancePercent >= 75)
                     {
                         Q.Cast(pred.CastPosition);
                     }
@@ -79,7 +79,7 @@ namespace KA_Ezreal.Modes
                 if (target.IsValidTarget(W.Range))
                 {
                     var pred = W.GetPrediction(target);
-                    if (pred.HitChance >= HitChance.High)
+                    if (pred.HitChancePercent >= 90)
                     {
                         W.Cast(pred.CastPosition);
                     }
