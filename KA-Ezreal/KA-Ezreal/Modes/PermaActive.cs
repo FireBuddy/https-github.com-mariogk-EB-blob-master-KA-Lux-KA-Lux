@@ -21,6 +21,17 @@ namespace KA_Ezreal.Modes
 
         public override void Execute()
         {
+            var targetManamune = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
+            if (targetManamune == null || targetManamune.IsZombie) return;
+            if (Manamune.IsReady() && Manamune.IsOwned() && Player.Instance.ManaPercent >= 55)
+            {
+                Manamune.Cast();
+            }
+            else
+            {
+                Manamune.Cast();
+            }
+
             if (Settings.CCedR && R.IsReady())
             {
                 var target = TargetSelector.GetTarget(R.Range, DamageType.Physical);
