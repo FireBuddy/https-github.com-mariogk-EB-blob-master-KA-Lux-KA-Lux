@@ -38,7 +38,7 @@ namespace KA_Lux.Modes
                 {
                     var predHealth = Prediction.Health.GetPrediction(targetR, 1000);
                     if (predHealth <= SpellDamage.GetRealDamage(SpellSlot.R, targetR)
-                        && predHealth > targetR.CountAlliesInRange(1000) * 50 + predHealth)
+                        && predHealth >+ targetR.CountAlliesInRange(1000) * 50)
                     {
                         if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
                         {
@@ -47,7 +47,7 @@ namespace KA_Lux.Modes
                         else
                         {
                             var pred = R.GetPrediction(targetR);
-                            if (pred.HitChancePercent >= 95)
+                            if (pred.HitChancePercent >= 85)
                             {
                                 R.Cast(pred.CastPosition);
                             }
