@@ -21,7 +21,7 @@ namespace KA_Lux
             {
                 AllowedCollisionCount = int.MaxValue 
             };
-            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Circular, 250, 1400, 335)
+            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Circular, 250, 1400, 100)
             {
                 AllowedCollisionCount = int.MaxValue 
             };
